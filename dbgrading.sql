@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 08:11 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Nov 16, 2022 at 02:19 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -57,15 +56,8 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`CLASS_ID`, `CLASS_CODE`, `SUBJ_ID`, `INST_ID`, `SYID`, `AY`, `DAY`, `C_TIME`, `IDNO`, `ROOM`, `SECTION`) VALUES
-(3, 'Spiral Filipino', 438, 1, 0, '2013-2014', 'MWF', '7:30-8:30', 0, 'Room01', 'A'),
-(4, 'Spiral English', 439, 1, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(5, 'Spiral Science', 441, 6, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(6, 'Spiral T.L.E', 442, 6, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(7, 'Spiral A.P', 443, 6, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(8, 'Spiral Religion', 444, 6, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(9, 'Spiral EsP.', 445, 6, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(10, 'Spiral Mathematics', 440, 7, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE'),
-(11, 'MAPEH', 447, 7, 0, '2013-2014', 'NONE', 'NONE', 0, 'NONE', 'NONE');
+(18, 'CC 101', 483, 8, 0, '2019-2020', 'MWF', '7:30-8:30', 0, '401', 'E2019'),
+(19, 'CC 102', 484, 8, 0, '2019-2020', 'NONE', 'NONE', 0, 'NONE', 'NONE');
 
 -- --------------------------------------------------------
 
@@ -76,7 +68,7 @@ INSERT INTO `class` (`CLASS_ID`, `CLASS_CODE`, `SUBJ_ID`, `INST_ID`, `SYID`, `AY
 CREATE TABLE `course` (
   `COURSE_ID` int(11) NOT NULL,
   `COURSE_NAME` varchar(30) NOT NULL,
-  `COURSE_LEVEL` int(11) NOT NULL DEFAULT 1,
+  `COURSE_LEVEL` int(11) NOT NULL DEFAULT '1',
   `COURSE_MAJOR` varchar(30) NOT NULL DEFAULT 'None',
   `COURSE_DESC` varchar(255) NOT NULL,
   `DEPT_ID` int(11) NOT NULL
@@ -87,12 +79,14 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`COURSE_ID`, `COURSE_NAME`, `COURSE_LEVEL`, `COURSE_MAJOR`, `COURSE_DESC`, `DEPT_ID`) VALUES
-(47, 'Grade 7', 7, '', 'Grade 7', 2),
-(48, 'Grade 8', 8, '', 'Grade 8 ', 1),
-(49, 'Grade 9', 9, '', 'Grade 9', 1),
-(50, 'Grade 10', 10, '', 'Grade 10', 1),
-(53, 'Grade 11', 11, '', 'Grade 11 ', 1),
-(54, 'Grade 12', 0, '', '2nd year of Senior High', 2);
+(57, '1st Year - 1st Semester', 0, '', '1st Year - 1st Semester', 9),
+(58, '2nd Year - 1st Semester', 0, '', '2nd Year - 1st Semester', 9),
+(59, '3rd Year - 1st Semester', 0, '', '3rd Year - 1st Semester', 9),
+(60, '4th Year - 1st Semester', 0, '', '4th Year - 1st Semester', 9),
+(61, '2nd Year - 2nd Semester', 0, '', '2nd Year - 2nd Semester', 9),
+(62, '1st Year - 2nd Semester', 0, '', '1st Year - 2nd Semester', 9),
+(63, '3rd Year - 2nd Semester', 0, '', '3rd Year - 2nd Semester', 9),
+(64, '4th Year - 2nd Semester', 0, '', '4th Year - 2nd Semester', 9);
 
 -- --------------------------------------------------------
 
@@ -103,7 +97,7 @@ INSERT INTO `course` (`COURSE_ID`, `COURSE_NAME`, `COURSE_LEVEL`, `COURSE_MAJOR`
 CREATE TABLE `department` (
   `DEPT_ID` int(11) NOT NULL,
   `DEPARTMENT_NAME` varchar(30) NOT NULL,
-  `DEPARTMENT_DESC` varchar(50) NOT NULL
+  `DEPARTMENT_DESC` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -111,8 +105,13 @@ CREATE TABLE `department` (
 --
 
 INSERT INTO `department` (`DEPT_ID`, `DEPARTMENT_NAME`, `DEPARTMENT_DESC`) VALUES
-(1, 'High School', 'High School Department'),
-(2, 'Junior High', 'Junior Higschool');
+(3, 'CICT', 'College of Communication and Information Technology'),
+(4, 'CBM', 'College of Business Mangament'),
+(5, 'CCJ', 'College of Criminal Justice'),
+(6, 'CET', 'College of Engineering and Technology'),
+(7, 'CHTM', 'College of Hospitality and Tourism Mangement'),
+(8, 'CAS', 'College of Arts and Science'),
+(9, 'CED', 'College of Education');
 
 -- --------------------------------------------------------
 
@@ -126,11 +125,11 @@ CREATE TABLE `grades` (
   `SUBJ_ID` int(11) NOT NULL,
   `INST_ID` int(11) NOT NULL,
   `SYID` int(30) NOT NULL,
-  `FIRST` int(11) NOT NULL,
-  `SECOND` int(11) NOT NULL,
+  `FIRST` longtext NOT NULL,
+  `SECOND` varchar(11) NOT NULL,
   `THIRD` int(11) NOT NULL,
   `FOURTH` int(11) NOT NULL,
-  `AVE` float NOT NULL,
+  `AVE` varchar(100) NOT NULL,
   `DAY` varchar(30) NOT NULL,
   `G_TIME` time NOT NULL,
   `ROOM` varchar(30) NOT NULL,
@@ -143,40 +142,44 @@ CREATE TABLE `grades` (
 --
 
 INSERT INTO `grades` (`GRADE_ID`, `IDNO`, `SUBJ_ID`, `INST_ID`, `SYID`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `AVE`, `DAY`, `G_TIME`, `ROOM`, `REMARKS`, `COMMENT`) VALUES
-(1, 20004277, 438, 1, 0, 30, 67, 0, 0, 3.85, 'NONE', '00:00:00', '', 'Failed', ''),
-(2, 20004277, 439, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(3, 20004207, 438, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(4, 20004207, 439, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(5, 20004180, 438, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(6, 20004180, 439, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(7, 20004180, 440, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(8, 20004180, 441, 6, 0, 60, 78, 80, 90, 77, 'NONE', '00:00:00', '', 'Passed', ''),
-(9, 20004180, 442, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(10, 20004180, 443, 6, 0, 90, 89, 78, 90, 87, 'NONE', '00:00:00', '', 'Passed', ''),
-(11, 20004180, 444, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(12, 20004180, 445, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(13, 20004180, 447, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(14, 20004623, 438, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(15, 20004623, 439, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(16, 20004623, 440, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(17, 20004623, 441, 6, 0, 80, 80, 78, 80, 80, 'NONE', '00:00:00', '', 'Passed', ''),
-(18, 20004623, 442, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(19, 20004623, 443, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(20, 20004623, 444, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(21, 20004623, 445, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(22, 20004623, 447, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(23, 6231415, 438, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(24, 6231415, 439, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(25, 6231415, 440, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(26, 6231415, 441, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(27, 6231415, 442, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(28, 6231415, 443, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(29, 6231415, 444, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(30, 6231415, 445, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(31, 6231415, 447, 7, 0, 90, 88, 91, 92, 90, 'NONE', '00:00:00', '', 'Passed', ''),
-(32, 6231415, 446, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(33, 6231415, 474, 0, 0, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', ''),
-(44, 6231415, 448, 0, 6, 0, 0, 0, 0, 0, 'NONE', '00:00:00', '', 'NONE', '');
+(49, 1900679, 482, 0, 13, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(50, 1900742, 482, 0, 15, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(51, 1900742, 483, 8, 19, '1.75', '1.00', 0, 0, '1.00', 'NONE', '00:00:00', '', 'Passed', ''),
+(52, 1900742, 484, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(53, 1900742, 485, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(54, 1900742, 486, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(55, 1900742, 487, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(56, 1900742, 488, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(57, 1900742, 489, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(58, 1900742, 490, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(59, 1900742, 491, 0, 19, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(60, 1900742, 500, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(61, 1900742, 492, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(62, 1900742, 493, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(63, 1900742, 494, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(64, 1900742, 495, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(65, 1900742, 496, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(66, 1900742, 497, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(67, 1900742, 498, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(68, 1900742, 499, 0, 20, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(69, 1900742, 501, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(70, 1900742, 502, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(71, 1900742, 503, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(72, 1900742, 504, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(73, 1900742, 505, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(74, 1900742, 506, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(75, 1900742, 507, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(76, 1900742, 508, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(77, 1900742, 509, 0, 22, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(78, 1900742, 510, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(79, 1900742, 511, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(80, 1900742, 512, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(81, 1900742, 513, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(82, 1900742, 514, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(83, 1900742, 515, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(84, 1900742, 516, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(85, 1900742, 517, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', ''),
+(86, 1900742, 518, 0, 31, '0', '0', 0, 0, '0', 'NONE', '00:00:00', '', 'NONE', '');
 
 -- --------------------------------------------------------
 
@@ -200,12 +203,7 @@ CREATE TABLE `instructor` (
 --
 
 INSERT INTO `instructor` (`INST_ID`, `INST_FULLNAME`, `INST_ADDRESS`, `INST_SEX`, `INST_STATUS`, `SPECIALIZATION`, `INST_EMAIL`, `EMPLOYMENT_STATUS`) VALUES
-(1, 'Joken Villanueva', 'Suay Himamaylan City', 'M', 'Single', 'Computer Etc.', 'joken000189561@gmail.com', 'Probationary'),
-(2, 'Erick jason Batuto', 'Kabanakalan City', 'M', 'Married', 'Computer ekc...', 'ejbatuto@hotmail.com', 'Regular'),
-(3, 'Joel Bagolcol', 'KCC-TC', 'M', 'Single', 'Automotive', 'joel@yahoo.com', 'Probationary'),
-(5, 'Allan', 'No whar', 'M', 'Single', 'Computer ekc...', 'allan@yahoo.com', 'Regular'),
-(6, 'sdfsdfsdg', 'dfdf', 'M', 'Single', 'sdfsdf', 'joken@gmail.com', 'dfsdf'),
-(7, 'George Wilson', 'Sample Address', 'M', 'Single', 'Sample', 'gwilson@sample.com', 'Regular');
+(8, 'Sarah', '120P MLQ', 'M', 'Single', 'IT', 'sarahroselimsison@gmail.com', 'Full time');
 
 -- --------------------------------------------------------
 
@@ -229,19 +227,6 @@ CREATE TABLE `major` (
   `MAJOR_ID` int(11) NOT NULL,
   `MAJOR` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `major`
---
-
-INSERT INTO `major` (`MAJOR_ID`, `MAJOR`) VALUES
-(1, 'English'),
-(2, 'General'),
-(3, 'Marketing Management'),
-(4, 'Financial Management'),
-(5, 'Filipino'),
-(6, 'Philosophy'),
-(7, 'Math');
 
 -- --------------------------------------------------------
 
@@ -276,9 +261,26 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`ROOM_ID`, `ROOM_NAME`, `ROOM_DESC`) VALUES
-(0, 'Room01', 'Room01'),
-(2, 'Room02', 'Room 02'),
-(4, 'Room 03', 'Room 03');
+(5, '401', '4th Floor'),
+(6, '402', '4th Floor'),
+(7, '403', '4th Floor'),
+(8, '404', '4th Floor'),
+(9, '405', '4th Floor'),
+(10, '406', '4th Floor'),
+(11, '407', '4th Floor'),
+(12, '408', '4th Floor'),
+(13, '409', '4th Floor'),
+(14, '410', '4th Floor'),
+(15, '411', '4th Floor'),
+(16, '412', '4th Floor'),
+(17, '413', '4th Floor'),
+(18, '414', '4th Floor'),
+(19, '415', '4th Floor'),
+(20, '416', '4th Floor'),
+(21, '417', '4th Floor'),
+(22, '418', '4th Floor'),
+(23, '419', '4th Floor'),
+(24, '420', '4th Floor');
 
 -- --------------------------------------------------------
 
@@ -303,12 +305,15 @@ CREATE TABLE `schoolyr` (
 --
 
 INSERT INTO `schoolyr` (`SYID`, `AY`, `SEMESTER`, `COURSE_ID`, `IDNO`, `CATEGORY`, `DATE_RESERVED`, `DATE_ENROLLED`, `STATUS`) VALUES
-(1, '2013-2014', 'First', 47, 20004277, 'ENROLLED', '2014-03-12 02:10:03', '0000-00-00 00:00:00', 'New'),
-(2, '2013-2014', 'First', 47, 20004207, 'ENROLLED', '2014-03-12 02:32:19', '0000-00-00 00:00:00', 'New'),
-(3, '2014-2015', 'First', 48, 20004277, 'ENROLLED', '2014-03-13 03:18:56', '0000-00-00 00:00:00', 'Continuing'),
-(4, '2013-2014', 'First', 47, 20004180, 'ENROLLED', '2014-03-24 08:28:35', '0000-00-00 00:00:00', 'New'),
-(5, '2013-2014', 'First', 47, 20004623, 'ENROLLED', '2014-03-24 09:16:15', '0000-00-00 00:00:00', 'New'),
-(6, '2018-2019', 'First', 47, 6231415, 'ENROLLED', '2021-01-28 07:34:09', '0000-00-00 00:00:00', 'New');
+(13, '2019-2020', 'First', 57, 1900679, 'ENROLLED', '2022-11-15 15:12:07', '0000-00-00 00:00:00', 'New'),
+(19, '2019-2020', 'First', 57, 1900742, 'ENROLLED', '2022-11-15 16:17:40', '0000-00-00 00:00:00', 'Regular'),
+(20, '2019-2020', 'First', 62, 1900742, 'ENROLLED', '2022-11-15 16:43:39', '0000-00-00 00:00:00', 'Regular'),
+(22, '2020-2021', 'First', 58, 1900742, 'ENROLLED', '2022-11-15 16:45:07', '0000-00-00 00:00:00', 'Regular'),
+(31, '2020-2021', 'First', 61, 1900742, 'ENROLLED', '2022-11-15 16:47:58', '0000-00-00 00:00:00', 'Regular'),
+(32, '2021-2022', 'First', 59, 1900742, 'ENROLLED', '2022-11-15 16:48:05', '0000-00-00 00:00:00', 'Regular'),
+(33, '2021-2022', 'First', 63, 1900742, 'ENROLLED', '2022-11-15 16:48:13', '0000-00-00 00:00:00', 'Regular'),
+(34, '2022-2023', 'First', 60, 1900742, 'ENROLLED', '2022-11-15 16:48:25', '0000-00-00 00:00:00', 'Regular'),
+(35, '2022-2023', 'First', 64, 1900742, 'ENROLLED', '2022-11-15 16:48:35', '0000-00-00 00:00:00', 'Regular');
 
 -- --------------------------------------------------------
 
@@ -320,15 +325,6 @@ CREATE TABLE `semester` (
   `SEM_ID` int(11) NOT NULL,
   `SEM` varchar(15) NOT NULL DEFAULT 'First'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `semester`
---
-
-INSERT INTO `semester` (`SEM_ID`, `SEM`) VALUES
-(1, 'First'),
-(2, 'Second'),
-(3, 'Summer');
 
 -- --------------------------------------------------------
 
@@ -344,19 +340,6 @@ CREATE TABLE `studentsubjects` (
   `SEMESTER` varchar(30) NOT NULL,
   `SY` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `studentsubjects`
---
-
-INSERT INTO `studentsubjects` (`STUDSUBJ_ID`, `IDNO`, `SUBJ_ID`, `LEVEL`, `SEMESTER`, `SY`) VALUES
-(6, 20004207, 11, 1, 'First', '2013-2014'),
-(8, 20004207, 13, 1, 'First', '2013-2014'),
-(9, 20004207, 14, 1, 'First', '2013-2014'),
-(10, 20004207, 15, 1, 'First', '2013-2014'),
-(13, 20004277, 13, 1, 'First', '2013-2014'),
-(14, 20004277, 14, 1, 'First', '2013-2014'),
-(15, 20004277, 15, 1, 'First', '2013-2014');
 
 -- --------------------------------------------------------
 
@@ -380,43 +363,64 @@ CREATE TABLE `subject` (
 --
 
 INSERT INTO `subject` (`SUBJ_ID`, `SUBJ_CODE`, `SUBJ_DESCRIPTION`, `UNIT`, `PRE_REQUISITE`, `COURSE_ID`, `AY`, `SEMESTER`) VALUES
-(438, 'Spiral Filipino', 'Filipino for Grade 7 - Spiral Filipino', 3, '', 47, '2013-2014', 'First'),
-(439, 'Spiral English', 'English for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(440, 'Spiral Mathematics', 'Mathematics for Grade 7 - Spiral Math', 3, '', 47, '2013-2014', 'First'),
-(441, 'Spiral Science', 'Science for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(442, 'Spiral T.L.E', 'T.L.E for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(443, 'Spiral A.P', 'Araling Panlipunan for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(444, 'Spiral Religion', 'rekligion for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(445, 'Spiral EsP.', 'EsP. for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(446, 'MAPEH', 'MAPEH for Grade 8 ', 3, '', 47, '2013-2014', 'First'),
-(447, 'MAPEH', 'MAPEH for Grade 7', 3, '', 47, '2013-2014', 'First'),
-(448, 'Religion', 'Religion for Grade 8', 3, '', 48, '2013-2014', 'First'),
-(449, 'Spiral Filipino', 'Filipino for Grade 8 ', 3, '', 48, '2013-2014', 'First'),
-(450, 'Spiral English', 'English for Grade 8', 3, '', 48, '2013-2014', 'First'),
-(451, 'Spiral Mathematics', 'Mathematics for Grade 8 ', 3, '', 48, '2013-2014', 'First'),
-(452, 'Spiral Science', 'Science for Grade ', 3, '', 48, '2013-2014', 'First'),
-(453, 'Spiral T.L.E.', 'T.L.E for Grade 7 ', 3, '', 48, '2013-2014', 'First'),
-(454, 'Spiral A.P.', 'Araling Panlipunan for Grade 8', 3, '', 48, '2013-2014', 'First'),
-(455, 'Spiral EsP.', 'EsP. for Grade 7', 3, '', 48, '2013-2014', 'First'),
-(457, 'Spiral Filipino', 'Filipino for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(458, 'Spiral English', 'English for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(459, 'Spiral Mathematics', 'Mathematics for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(460, 'Spiral Science', 'Science for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(461, 'Spiral A.P.', 'Araling Panlipunan for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(462, 'Spiral T.L.E.', 'T.L.E for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(463, 'Spiral MAPEH', 'MAPEH for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(464, 'Values Education', 'Values Education for Grade 9', 3, '', 49, '2013-2014', 'First'),
-(465, 'Computer', 'Computer for grade 9', 3, '', 49, '2013-2014', 'First'),
-(466, 'Religion IV', 'Religion for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(467, 'Spiral Filipino', 'Filipino for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(468, 'Spiral Mathematics', 'Mathematics for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(469, 'Spiral Science', 'Science for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(471, 'Spiral T.L.E.', 'T.L.E for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(472, 'Spiral MAPEH', 'MAPEH for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(473, 'Values Education', 'Values Education for Grade 10', 3, '', 50, '2013-2014', 'First'),
-(474, 'CAT', 'Citizens Advancement Training', 3, '', 50, '2013-2014', 'First'),
-(475, 'Computer', 'Computer for grade 10', 3, '', 50, '2013-2014', 'First'),
-(476, 'hjgjhggh', 'gj', 3, '', 51, '2013-2014', 'First');
+(483, 'CC 101', 'Introduction to Computing (HTML/CSS)', 3, '', 57, '2017-2018', 'First'),
+(484, 'CC 102', 'Fundamentals of Programming (JAVA)', 3, '', 57, '2019-2020', 'First'),
+(485, 'DS 101', 'Discrete Structures 1', 3, '', 57, '2019-2020', 'First'),
+(486, 'AL 101', 'Algorithms and Complexity', 3, '', 57, '2019-2020', 'First'),
+(487, 'GE 1', 'Understanding the Self', 3, '', 57, '2019-2020', 'First'),
+(488, 'GE 2', 'Readings in Philippine History', 3, '', 57, '2019-2020', 'First'),
+(489, 'GE 10', 'Pagbasa at Pagsulat sa Iba''t Ibang Disiplina', 3, '', 57, '2019-2020', 'First'),
+(490, 'PE 1', 'Physical Education 1', 2, '', 57, '2017-2018', 'First'),
+(491, 'NSTP 1', 'CWTS/ROTC 1', 2, '', 57, '2017-2018', 'First'),
+(492, 'CC 103', 'Intermediate Programming (Adv. Java)', 3, '', 62, '2017-2018', 'First'),
+(493, 'CC 104', 'Data Structure and Algorithm', 3, '', 62, '2017-2018', 'First'),
+(494, 'CC 105', 'Information Management (DB/SQL)', 3, '', 62, '2017-2018', 'First'),
+(495, 'DS 102', 'Discrete Structures 2', 3, '', 62, '2017-2018', 'First'),
+(496, 'GE 3', 'The Contemporary World', 3, '', 62, '2017-2018', 'First'),
+(497, 'GE 4', 'Mathematics in the Modern World', 3, '', 62, '2017-2018', 'First'),
+(498, 'PE 2', 'Physical Education 2', 3, '', 62, '2017-2018', 'First'),
+(499, 'GE 11', 'Panitikang Filipino', 3, '', 62, '2017-2018', 'First'),
+(500, 'NSTP 2', 'CWTS/ROTC 2', 2, '', 62, '2017-2018', 'First'),
+(501, 'CC 106', 'Application Development and Emerging Technologies', 3, '', 58, '2019-2020', 'First'),
+(502, 'SDF 104', 'Object Oriented Programming 1 (VB.net)', 3, '', 58, '2019-2020', 'First'),
+(503, 'AL 102', 'Automata Theory and Formal Languages', 3, '', 58, '2019-2020', 'First'),
+(504, 'NC 101', 'Networks and Communication', 3, '', 58, '2019-2020', 'First'),
+(505, 'GE 5', 'Purposive Communication', 3, '', 58, '2019-2020', 'First'),
+(506, 'GE 6', 'Art Appreciation', 3, '', 58, '2019-2020', 'First'),
+(507, 'GEE 22', 'Philippine Indigenous Communities', 3, '', 58, '2019-2020', 'First'),
+(508, 'IT 100', 'Internet and Advanced Office Productivity', 3, '', 58, '2019-2020', 'First'),
+(509, 'PE 3', 'Physical Education 3', 2, '', 58, '2019-2020', 'First'),
+(510, 'AR 101', 'Architecture and Organization', 3, '', 61, '2017-2018', 'First'),
+(511, 'OS 101', 'Operational System', 3, '', 61, '2019-2020', 'First'),
+(512, 'PL 101', 'Programing Languages', 3, '', 61, '2019-2020', 'First'),
+(513, 'HCI 101', 'Human Computer Interaction', 3, '', 61, '2019-2020', 'First'),
+(514, 'AL 103', 'Logic Design', 3, '', 61, '2019-2020', 'First'),
+(515, 'GE 7', 'Science, Technology and Society', 3, '', 61, '2019-2020', 'First'),
+(516, 'GE 8', 'Ethics', 3, '', 61, '2019-2020', 'First'),
+(517, 'GEE 32', 'Philippine Popular Culture', 3, '', 61, '2019-2020', 'First'),
+(518, 'PE 4', 'Physical Education 4', 3, '', 61, '2019-2020', 'First'),
+(519, 'IAS 101', 'Information Assurance and Security', 3, '', 59, '2019-2020', 'First'),
+(520, 'SE 101', 'Software Engineering 1', 3, '', 59, '2019-2020', 'First'),
+(521, 'SP 101', 'Social Issues and Professional Practice', 3, '', 59, '2019-2020', 'First'),
+(522, 'ELEC 1', 'Computational Science', 3, '', 59, '2019-2020', 'First'),
+(523, 'CC 107', 'Mobile Programming', 3, '', 59, '2019-2020', 'First'),
+(524, 'DS 103', 'Statistics with SPSS', 3, '', 59, '2019-2020', 'First'),
+(525, 'GE 9', 'Rizal''s Life and Works', 3, '', 59, '2017-2018', 'First'),
+(526, 'IT 101', 'Micro Controller Programming', 3, '', 59, '2019-2020', 'First'),
+(527, 'GEE 13', 'Human Reproduction', 3, '', 59, '2019-2020', 'First'),
+(528, 'ELEC 2', 'Intelligent System', 3, '', 63, '2019-2020', 'First'),
+(529, 'SE 102', 'Software Engineering 2', 3, '', 63, '2019-2020', 'First'),
+(530, 'THS 101', 'CS Thesis Writing 1', 3, '', 63, '2019-2020', 'First'),
+(531, 'ELEC 3', 'Parallel and Distributed Computing', 3, '', 63, '2019-2020', 'First'),
+(532, 'CC 108', 'Content Management System', 3, '', 63, '2019-2020', 'First'),
+(533, 'OS 102', 'Open Source Operating System', 3, '', 63, '2019-2020', 'First'),
+(534, 'IT 102', 'Social Media and Presentation', 3, '', 63, '2019-2020', 'First'),
+(535, 'THS 102', 'CS Thesis Writing 2', 6, '', 60, '2019-2020', 'First'),
+(536, 'ELEC 4', 'Graphics and Visual Computing', 3, '', 60, '2019-2020', 'First'),
+(537, 'ELEC 5', 'System Fundamentals', 3, '', 60, '2019-2020', 'First'),
+(538, 'SDF 105', 'Object Oriented Programming 2 (C#)', 3, '', 60, '2019-2020', 'First'),
+(539, 'HCI 102', 'Technopreneurship/ E-Commerce', 6, '', 60, '2019-2020', 'First'),
+(540, 'PRC 101', 'PRACTICUM (OJT)', 3, '', 64, '2019-2020', 'First');
 
 -- --------------------------------------------------------
 
@@ -439,45 +443,7 @@ CREATE TABLE `tblrequirements` (
 --
 
 INSERT INTO `tblrequirements` (`REQ_ID`, `NSO`, `BAPTISMAL`, `ENTRANCE_TEST_RESULT`, `MARRIAGE_CONTRACT`, `CERTIFICATE_OF_TRANSFER`, `IDNO`) VALUES
-(20, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004277),
-(21, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004207),
-(22, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004180),
-(23, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004425),
-(24, 'Yes', 'Yes', 'Yes', 'No', 'No', 20002251),
-(25, 'Yes', 'Yes', 'Yes', 'No', 'No', 20002838),
-(26, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004623),
-(27, 'Yes', 'Yes', 'Yes', 'No', 'No', 2001497),
-(28, 'Yes', 'Yes', 'No', 'No', 'No', 20001057),
-(29, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004407),
-(30, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20004749),
-(31, 'Yes', 'Yes', 'No', 'No', 'No', 20001484),
-(32, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20003333),
-(33, 'Yes', 'Yes', 'Yes', 'No', 'No', 20004510),
-(34, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001779),
-(35, 'Yes', 'Yes', 'No', 'No', 'No', 20001482),
-(36, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001937),
-(37, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001648),
-(38, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20002408),
-(39, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20005936),
-(40, 'No', 'No', 'No', 'No', 'No', 20001550),
-(41, 'Yes', 'Yes', 'Yes', 'No', 'No', 20002270),
-(42, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001932),
-(43, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001498),
-(45, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001503),
-(46, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001925),
-(47, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001658),
-(48, 'Yes', 'No', 'No', 'No', 'No', 20001550),
-(49, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001957),
-(50, 'No', 'No', 'No', 'No', 'No', 20001456),
-(51, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001673),
-(52, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001557),
-(53, 'Yes', 'Yes', 'Yes', 'No', 'No', 20002311),
-(54, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20001742),
-(55, 'Yes', 'Yes', 'Yes', 'No', 'Yes', 20002106),
-(56, 'Yes', 'Yes', 'Yes', 'No', 'No', 20001853),
-(57, 'Yes', 'Yes', 'No', 'No', 'Yes', 20001645),
-(58, 'Yes', 'Yes', 'No', 'Yes', 'No', 123456),
-(59, 'Yes', 'Yes', 'Yes', 'No', 'No', 6231415);
+(1, 'No', 'No', 'No', 'No', 'No', 19);
 
 -- --------------------------------------------------------
 
@@ -505,45 +471,9 @@ CREATE TABLE `tblstuddetails` (
 --
 
 INSERT INTO `tblstuddetails` (`DETAIL_ID`, `FATHER`, `FATHER_OCCU`, `MOTHER`, `MOTHER_OCCU`, `BOARDING`, `WITH_FAMILY`, `GUARDIAN`, `GUARDIAN_ADDRESS`, `OTHER_PERSON_SUPPORT`, `ADDRESS`, `IDNO`) VALUES
-(20, 'Walter Da-anoy', 'Employee', 'Jessielyn Da-anoy', 'Housewife', 'No', 'No', '', '', '', '', 20004277),
-(21, 'Mario P. Amparado', 'OFW', 'Yolly D. Odasco', 'Housewife', 'Yes', 'No', 'Domingga Gomez', '', '', '', 20004207),
-(22, 'robert P. ferrer', 'fisherman', 'josephene b. ferrer', 'Housewife', 'Yes', 'Yes', 'josephene b ferrer', 'brgy.cayhagan,sipalay city,neg.occ.', 'sister', '', 20004180),
-(23, 'Renelio Pintuan', 'Driver', 'Nanette Pintuan', 'OFW', 'No', 'Yes', 'Ma. Melca Jaranilla', 'Coloso St. Kabankalan City', '', '', 20004425),
-(24, '', '', 'dionalita apawan', 'housewife', 'No', 'No', 'sofronia apawan', 'adela st. brgy. 1', '', '', 20002251),
-(25, 'Pablito Vicente', 'Laborer', 'Crislie Vicente', 'Laborer', 'No', 'Yes', 'Angelo Lopez', 'Coloso Subd. Kabankalan City', '', '', 20002838),
-(26, 'Luis Balico', 'N/A', 'Leonisa Balico', 'N/A', 'No', 'Yes', 'Mary Ann Balico', 'Brgy Isidro Village, Talubangi Kabankalan City', 'N/A', '', 20004623),
-(27, 'Panfilo Catalan Buendia', 'Vendors', 'Gloria Aspan Buendia', 'Vendors', 'Yes', 'Yes', 'Mr. and Mrs. Gloria Buendia', 'Brgy. Tapi, Kabankalan City', '', '', 2001497),
-(28, 'Ramar salazar', 'hair stylist', 'Kathryn Lucy salazar', 'none', 'No', 'Yes', 'DR. MIlagros Aurea Sabidalas ', '12 Rizal St. kabankalan city', '', '', 20001057),
-(29, 'Ronald Martisano', 'laxborer', 'Jean Martisano', 'Housewife', 'No', 'Yes', '', '', '', '', 20004407),
-(30, 'Rollen Gealon', 'Laborer', 'Marife Gealon', 'Housewife', 'No', 'Yes', 'Mr. & Mrs Rollen Gealon', 'Brgy.2 Ilog, Neg.Occ', '', '', 20004749),
-(31, 'James Andrew Benedicto', 'Cook', 'Ma. Sheila Benedicto', 'DH', 'No', 'Yes', '', '', '', '', 20001484),
-(32, 'Leve Voluntate', 'Farmer', 'Lerma Voluntate', 'Deceased', 'No', 'Yes', '', '', 'Mr.Von Martir', 'Bacolod City', 20003333),
-(33, 'Rudy B. Magada, Jr', 'Fish Dealer', 'Mary I. Magada', 'Housewife', 'No', 'Yes', '', '', 'Ezperanza Magada', 'Libon, Tuyom, Cauayan, Negros Occidental', 20004510),
-(34, 'Dionisio C. Herrera', 'Farmer', 'Rubylan O. Herrera', 'plane housewife', 'No', 'Yes', 'Dionisio c. Herrera', 'Mohon Brgy1 . kab city neg occ', '', '', 20001779),
-(35, 'Adriano Bayog', 'Farmer', 'Mamerna Dulana', 'housekeeper', 'Yes', 'No', 'Seminary Fathers', 'Kabankalan City', 'Parish', 'La Castellana', 20001482),
-(36, 'Ruben J. Principe', '', 'Evelina Gumawa Principe', '', 'No', 'No', '', '', '', '', 20001937),
-(37, 'Deceased', 'Deceased', 'Lorna Bandolos', 'Housewife', 'No', 'Yes', '', 'Lorna Bandolos', '', 'Brgy Dancalan Ilog Negros Occidental', 20001648),
-(38, 'AMBROCIO SERION', 'FARMER', 'NORMENDA SERION', 'HOUSE WIFE', 'No', 'No', 'JONALYN BUGALON', 'Kabankalan City', 'JONALYN BUGALON', 'KABANKALAN CITY', 20002408),
-(39, 'no', '', 'Merlita Macurio', 'housewife', 'No', 'No', 'Gerom Bello', 'Brgy,1 fzo subd.', '', '', 20005936),
-(40, 'b', '', '', '', 'No', 'No', '', '', '', '', 20001550),
-(41, 'Mr. Edgar C. Macario', 'Farmer', 'Mrs. Hilda F. Macario', 'Housewife', 'No', 'Yes', 'Mrs. Imelda M. Gatoc', 'Cabintagan, Brgy. Linao Kabankalan City, Negros Occidental', 'Mr. Robert C. Macario', 'Brgy. Salong Kabankalan City', 20002270),
-(42, 'Virgilio Puyogao', 'Carpenter', 'Angelica Puyogao', 'Housewife', 'No', 'Yes', 'Virgilio Puyogao', 'Dancalan, Ilog, Negros Occidental', 'Annabel Puyogao', 'Dancalan, Ilog, Negros Occidental', 20001932),
-(43, 'William Bulgado', 'Driver', 'Lolita Bulgado', 'Housewife', 'Yes', 'Yes', 'William Bulgado', 'magsaysay tabu ilog neg.occ', 'none', 'none', 20001498),
-(45, 'Ricardo Tayoba Cabiten', 'Farmer', 'Nelly Cuenca Cabiten', 'Housewife', 'No', 'Yes', 'Nancy Cuenca Cabiten', 'Mambugsay, Cauayan, Negros Occidental', 'Romar Cuenca Cabiten', 'Mambugsay, Cauayan, Negros Occidental', 20001503),
-(46, 'Joenarie CastaÃ±o', 'Laborer', 'Jeanly CastaÃ±o', 'Housewife', 'No', 'Yes', 'Melinde CastaÃ±o', 'Brgy. Daan Banua, Kabankalan City', 'None', 'N.A', 20001925),
-(47, 'Alex Flores', 'Carpenter', 'Nelfa L. Flores', 'Brgy. Custodian', 'No', 'Yes', 'Nelfa L. Flores', 'Brgy. Camugao, Kabankalan City', 'Maria Elena T. Flores', 'Brgy. Camugao, Kabankalan City', 20001658),
 (48, 'BENIGNO B. CORTEZ', 'FARMER', 'TERESITA P. CORTEZ', 'HOUSE WIFE', 'Yes', 'No', 'BENIGNO B. CORTEZ', 'TABUGON,kABANKALAN CITY', 'NONE', 'NONE', 20001550),
-(49, 'Samuel Daulong', 'Construction Worker', 'Mariles Daulong', 'Office employee', 'Yes', 'Yes', 'Mariles Daulong', 'Caliling,Cauayan Negros Occidental', 'Henry L. Jordan', 'Brgy. Binicuil, Kabankalan City', 20001957),
-(50, 'Diosdado Arillo', 'Employee', 'Jesusa Arillo', 'House Wife', 'Yes', 'No', 'Nilda Jestopa', 'Nilda Jestopa', '', 'Adela St. Kabankalan City', 20001456),
-(51, 'Jesus M. Gamala', 'Farmer', 'Carmen N. Gamala', 'Housewife', 'Yes', 'No', 'Saro Yana', 'Bonifacio St.Kabankalan City', 'Jeza Gamala', 'DasmariÃ±as Cavite', 20001673),
-(52, 'Raul D. Deanon', 'Driver', 'Jonah O. Deanon', 'Housewife', 'No', 'Yes', 'Jonah O. Deanon', 'Dancalan Ilog, Neg, Occ', '', '', 20001557),
-(53, 'Ernesto Elijan', 'Welder', 'Emilia Elijan', 'Vendor', 'No', 'Yes', 'Ernalyn Elijan Jamon', 'Pinaguinpinan, KAbankalan City', 'Erline Elijan', 'Saudi Rihad', 20002311),
-(54, 'Edward E. Geria', 'Seaman', 'Nilfa G. Geria', 'Agriculturist', 'No', 'Yes', 'Nilfa G.Geria', 'Brgy.Guiljungan Cauayan Negros Occidental', '', '', 20001742),
-(55, 'Benjie Melanio Sr.', 'Farmer', 'Delia Melanio', 'Housewife', 'No', 'Yes', 'Benjie Melanio', 'Brgy. Linao', '', '', 20002106),
-(56, 'Jose Romel T. Silleva', 'Carpenter', 'Daisy O. Silleva', 'House Wife', 'No', 'Yes', 'Daisy O. Silleva', 'Mapait, Su-ay, Himamaylan City, Negros Occidental', 'Romsdaen O. SIlleva', 'iloilo City', 20001853),
-(57, 'Dionisio espadero', 'Farming', 'Rosita Espadero', 'House wife', 'No', 'Yes', 'Erlinda Guinson', 'Tapi kab City', 'Sister', 'Tapi kab City', 20001645),
-(58, '', '', '', '', 'No', 'No', '', '', '', '', 123456),
-(59, 'James Smith', 'Software Engineer', 'Cynthia Smith', 'House Wife', 'Yes', 'No', '', 'Sample Address', '', '', 6231415);
+(60, 'Abraham I. Sison', 'Retired', 'Rosita Lim', 'House Wife', '', '', 'Abraham I. Sison', '120P MLQ St. New Lower Bicutan, Taguig City', 'Rosita Lim', '120P MLQ St. New Lower Bicutan, Taguig City', 1900742),
+(61, '', '', '', '', '', '', '', '', '', '', 19);
 
 -- --------------------------------------------------------
 
@@ -553,7 +483,7 @@ INSERT INTO `tblstuddetails` (`DETAIL_ID`, `FATHER`, `FATHER_OCCU`, `MOTHER`, `M
 
 CREATE TABLE `tblstudent` (
   `S_ID` int(11) NOT NULL,
-  `IDNO` int(20) NOT NULL,
+  `IDNO` varchar(20) NOT NULL,
   `FNAME` varchar(40) NOT NULL,
   `LNAME` varchar(40) NOT NULL,
   `MNAME` varchar(40) NOT NULL,
@@ -574,44 +504,8 @@ CREATE TABLE `tblstudent` (
 --
 
 INSERT INTO `tblstudent` (`S_ID`, `IDNO`, `FNAME`, `LNAME`, `MNAME`, `SEX`, `BDAY`, `BPLACE`, `STATUS`, `AGE`, `NATIONALITY`, `RELIGION`, `CONTACT_NO`, `HOME_ADD`, `EMAIL`) VALUES
-(17, 20004277, 'JESTERRAMY', 'DA-ANOY ', 'PATETE', 'F', '1995-06-14', 'Butuan City', 'Single', 19, 'Filipino', 'roman catholic', '09099754195', 'Brgy Camugao Kabankalan City', 'jesterramy14@yahoo.com'),
-(18, 20004207, 'LHENYL GRACE', 'AMPARADO', 'ODASCO', 'F', '1995-08-27', 'Lancaan Dasmarinas Cavite', 'Single', 18, 'Filipino', 'roman catholic', '09263621995', 'Yao Yao Cauayan negros Occidental', 'lhenylgraceamparado@yahoo.com'),
-(19, 20004180, 'MYLENE', 'FERRER', 'BALUCAN', 'F', '1972-05-22', 'brgy.cayhagan,sipalay city,neg.occ.', 'Single', 18, 'Filipino', 'roman catholic', '091071717257', 'brgy.cayhagan,sipalay city,neg.occ.', 'macaferrer@yahoo.com'),
-(20, 20004425, 'JOHN KENNETH', 'PINTUAN', 'JARANILLA', 'M', '1996-05-14', 'PGH Manila', 'Single', 17, 'Filipino', 'Roman Catholic', '09305373831', 'Villa San jose Brgy. 6 Kabankalan City Negros Occidental', 'Pintuan123@yahoo.com'),
-(21, 20002251, 'ADRIAN', 'APAWAN', 'ELLORAN', 'M', '1995-10-26', 'bacolod city', 'Single', 18, 'filipino', 'roman catholic', '09128214525', 'adela st. brgy.1', 'pidska_dian@yahoo.com'),
-(22, 20002838, 'MARK ANTHONY', 'VICENTE', 'TITONG', 'M', '1995-10-19', 'Kabankalan Cit y', 'Single', 18, 'Filipino', 'Roman Catholic', '+639071564380', '', 'mav.makeu_19@ymail.com'),
-(23, 20004623, 'SHARAH MAE', 'BALICO', 'PILLONES', 'F', '1990-11-01', 'Tagoloan Misamis Oriental', 'Single', 23, 'Filipino', 'Catholic', '09216230993', 'Brgy Isidro Village, Talubangi Kabankalan City', 'Sharahmae_balico@yahoo.com'),
-(24, 2001497, 'RAFFY', 'BUENDIA', 'RENDON', 'M', '1993-04-13', 'Tapi, Kabankalan City', 'Single', 20, 'Filipino', 'Roman Catholic', '09483774901', 'Brgy. Tapi, Kabankalan City, Negros Occidental', 'Zieken@yahoo.com'),
-(25, 20001057, 'EVAN LLOYD', 'SALAZAR', 'AYALIN', 'M', '1995-05-17', 'Kabankalan City', 'Single', 18, 'filipino', 'roman catholic', '09173077451', '12 rizal St.kabankalan CIty', 'Evanlloydsalazar@yahoo.com'),
-(26, 20004407, 'JOHN MARK', 'MARTISANO', 'DEPRA', 'M', '1993-06-17', 'Ilog, Neg. Occ', 'Single', 20, 'Pilipino', 'Catholic', '09469080812', 'So. Malabong Andulauan Ilog, Neg. Occ.', 'freestyle05@yahoo.com'),
-(27, 20004749, 'JAMAICA JAIRAH', 'GEALON', 'DELA CRUZ', 'F', '1994-01-12', 'Brgy.2 Ilog,Neg.Occ.', 'Single', 19, 'Filipino', 'Roman Catholic', '09089917220', 'Brgy.2 Ilog Negros Occidental', 'gealon12@yahoo.com.ph'),
-(28, 20001484, 'JAMES ANGELO', 'BENEDICTO', 'GARANGANAO', 'M', '1993-11-18', 'Bacolod City', 'Single', 20, 'Filipino', 'Catholic', '09305446790', 'Dancalan Ilog, Negros Occidental', 'jamesangelobenedicto@yahoo.com'),
-(29, 20003333, 'JENEBIE', 'VOLUNTATE', 'TABUCON', 'F', '1991-06-17', 'Kabankalan', 'Single', 22, 'Filipino', 'Roman Catholic', '09102247024', 'Brgy.Camansi,Kabankalan City,Neg.Occ.', 'jhen1704_cute@yahoo.com'),
-(30, 20004510, 'RUDY', 'MAGADA, I', 'ITONA', 'M', '1995-02-05', 'Calumpang, Cauayan, Negros Occidental', 'Single', 18, 'Filipino', 'Roman Catholic', '09106910482', 'Libon, Tuyom, Cauayan, Negros Occidental', 'magadarudy@yahoo.com'),
-(31, 20001779, 'JOEVEL', 'HERRERA', 'GONZALES', 'M', '1993-05-16', 'Negros Occidental', 'Single', 20, 'Filipino', 'Roman Catholic', '09093789858', 'Brgy 1,Kab city ,Neg Occ', 'herrerajovel@yahoo.com'),
-(32, 20001482, 'ALDREN', 'BAYOG', 'DULANA ', 'M', '1993-12-27', 'La Castellana', 'Single', 20, 'Filipino', 'Roman Catholic', '09077898435', 'Kabankalan City', 'Aldz_bayog@yahoo.com'),
-(33, 20001937, 'MERRY GRACE', 'PRINCIPE', 'GUMAWA', 'F', '1988-03-12', 'Candoni', 'Single', 25, 'Filipino', 'Roman Catholic', '09094397440', 'Pabera St.Brgy.East,Candoni, Negros Occidental', 'merrygraceprincipe@yahoo.com'),
-(34, 20001648, 'SHIELA MARIE', 'BANDOLOS', 'TADAYA', 'F', '1990-08-21', 'Brgy. Dancalan Ilog Negros Occidental', 'Single', 22, 'Filipino', 'Roman Catholic', '09095596773', 'Brgy. Dancalan Ilog Negros Occidental', 'Marie_Bandolos@yahoo.com'),
-(35, 20002408, 'ANALYN', 'SERION', 'ONLAGADA', 'F', '1993-10-30', 'Bry. TAMPALON KABANKALAN CITY', 'Single', 20, 'Filipino', 'Catholic', '09476154838', 'Kabankalan City', 'Analynserion@yahoo.com'),
-(36, 20005936, 'JEAN', 'MACURIO', 'GONDAO', 'F', '1994-10-29', 'Brgy.Bantayan', 'Single', 19, 'Filipino', 'Baptist', '09125341710', 'Brgy. Bantayan Kabankalan City', 'jean_29_jake@yahoo.com'),
-(37, 20001550, 'BENIGNO', 'CORTEZ', 'LACPAO', 'M', '1992-02-03', 'DUMAGUETE', 'Single', 21, 'FILIPINO', 'BAPTIST', '09097313999', 'TABUGON,KABANKALAN CITY,NEGROS OCCIDENTAL', 'deadlyjay_23@yahoo.com'),
-(38, 20002270, 'ARHIL JUN', 'MACARIO', 'FERNANDEZ', 'M', '1993-06-12', 'Cabintagan, Brgy. Linao', 'Single', 20, 'Filipino', 'Roman Catholic', '09489776185', 'Cabintagan, Brgy. Linao Kabankalan City, Negros Occidental', 'elehra_jun_09@yahoo.com'),
-(39, 20001932, 'ANA MAE', 'PUYOGAO', 'LACSON', 'F', '1992-10-11', 'Dancalan, Ilog, Neg. Occ', 'Single', 21, 'Filipino', 'Baptist', '09079002850', 'Brgy. Dancalan, Ilog, Negros Occidental', 'puyogaoanamae@yahoo.com'),
-(40, 20001498, 'GINA', 'BULGADO', 'MALABAGO', 'F', '1992-06-28', 'Magsaysay tabu ilog ', 'Single', 21, 'Filipino', 'Roman Catholic', '0912-981-4177', 'magsaysay tabu,ilog negros occidental', 'carlghin_52@yahoo.com'),
-(42, 20001503, 'RHEA MAY', 'CABITEN', 'CUENCA', 'F', '1992-05-01', 'Mambugsay, Cauayan, Negros Occidental', 'Single', 21, 'Filipino', 'Roman Catholic', '09097862920', 'Mambugsay, Cauayan, Negros Occidental', 'rean7901@gmail.com'),
-(43, 20001925, 'JOJEAN', 'CASTAÃ±O', 'SOBERANO', 'F', '1994-09-27', 'Silay City', 'Single', 19, 'Filipino', 'Roman Catholic', '09122543919', 'Brgy. Daan Banua, Kabankalan City', 'Jojean_c@yahoo.com'),
-(44, 20001658, 'STEVE', 'FLORES', 'LIPER', 'M', '1993-01-02', 'Brgy. Camugao, Kabankalan City', 'Single', 21, 'Filipino', 'Roman Catholic', '09077659710', 'Brgy. Camugao, Kabankalan City', 'skevinz_23@ymail.com'),
-(46, 20001957, 'MA. LAVINIA', 'DAULONG', 'CORSINO', 'F', '1994-06-09', 'Caliling,Cauayan Neg. Occ', 'Single', 19, 'Filipino', 'Roman Catholic', '09073837380', 'Caliling,Cauayan Negros Occidental', 'corsin90@yahoo.com'),
-(47, 20001456, 'DIWANNIE', 'ARILLO', 'PAGUNSAN', 'F', '1992-10-12', 'Brgy.Tabugon Kabankalan City Neg. Occ.', 'Single', 21, 'Filipino', 'Roman Catholic', '09484525429', 'Brgy. Tabugon Kabankalan City Neg. Occ.', 'dj_arillo@yahoo.com'),
-(48, 20001673, 'CARJEI', 'GAMALA', 'NAZARETH', 'M', '1993-04-28', 'Bulata', 'Single', 20, 'Filipino', 'Catholic', '09484207156', 'Bulata Cauyan Negros Occidental', 'kai_luv@yahoo.com'),
-(49, 20001557, 'JENNY JOY', 'DEANON', 'O.', 'F', '1992-12-16', 'Dancalan Ilog,Neg, Occ', 'Single', 22, 'Filipino', 'Roman Catholic', '09466021131', 'Dancalan Ilog Neg,Occ', 'jj_deah16@Yahoo.com'),
-(50, 20002311, 'ELSIE', 'ELIJAN', 'TABLIGAN', 'F', '1989-10-08', 'Provincial Hospital Bacolod City', 'Single', 24, 'Filipino', 'Baptist', '09128990012', 'Malinao, Dancalan, Ilog Negros Occidental', 'cute_elz20@yahoo.com'),
-(51, 20001742, 'GERGEN MAE', 'GERIA', 'GADOT', 'F', '1994-05-19', 'BAcolod City', 'Single', 19, 'Filipino', 'Roman Catholic', '09129207751', 'Brgy.Guiljungan Cauayan Negros Occidental', 'geriaergenmage@yahoo.com'),
-(52, 20002106, 'JEROM', 'MELANIO', 'BANDOLON', 'M', '1992-10-12', 'Kabankalan City', 'Single', 21, 'Filipino', 'Cathilic', '09303950074', 'Brgy. Linao, Kabankalan City', 'melaniojerom@yahoo.com'),
-(53, 20001853, 'LIEZL', 'SILLEVA', 'ORDOÃ±A', 'F', '1994-05-19', 'Su-ay', 'Single', 19, 'Pilipino', 'Catholic', '09122319960', 'Mapait, Su-ay, Himamaylan City, Negros Occidental', 'lieztryx_16@yahoo.com'),
-(54, 20001645, 'ROSELYN', 'ESPADERO', 'T', 'F', '1989-02-11', 'dancalan ilog', 'Single', 24, 'filipino', 'Catholic', '09122292298', 'tapi kab city', 'roselyt.espadero@yahoo.com'),
-(55, 123456, 'KEVIN', 'GARGAR', 'DFD', 'M', '2013-07-13', 'bacolod city', 'Single', 12, '', '', '', '', 'Kev@yahoo.cpm'),
-(56, 6231415, 'John', 'Smith', 'D', 'M', '2000-06-23', 'Sample City', 'Single', 15, 'Filipino', 'Roman Catholic', '+12354987', 'Sample Address', 'jsmith@sample.com');
+(57, '1900742', 'Sarah Rose', 'Sison', 'Lim', 'F', '2001-01-20', 'Manila', 'Single', 21, 'Filipino', 'The Church of Jesus Christ of Latter Day Saints', '09761131191', '120P MLQ St. New Lower Bicutan, Taguig City', 'sarahroselimsison@gmail.com'),
+(58, '1900679', 'Mary Jane', 'Bayod', 'Buhatin', 'F', '0000-00-00', '', 'Single', 21, '', '', '', '', 'bayodmaryjane@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -632,15 +526,9 @@ CREATE TABLE `useraccounts` (
 --
 
 INSERT INTO `useraccounts` (`ACCOUNT_ID`, `ACCOUNT_NAME`, `ACCOUNT_USERNAME`, `ACCOUNT_PASSWORD`, `ACCOUNT_TYPE`) VALUES
-(1, 'Janno Palacios', 'janobe@gmail.com', 'f865b53623b121fd34ee5426c792e5c33af8c227', 'Administrator'),
-(3, 'Joken Villanueva', 'joken@yahoo.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Administrator'),
-(4, 'Hatch Villanueva', 'hatchvillanueva16@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Registrar'),
-(6, 'joenin', 'joenin@yahoo.com', '25f3c6036a19460cd5d3f302fa7b99e5be56cb0e', 'Encoder'),
-(7, 'Erick jason Batuto', 'ejbatuto@hotmail.com', 'ee9800e8361e948d0106b38fc6e6311ee238beed', 'Administrator'),
-(8, 'joken', 'j@y.c', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Student'),
-(9, 'Allan', 'allan@yahoo.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Teacher'),
-(10, 'sdfsdfsdg', 'joken@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Teacher'),
-(11, 'George Wilson', 'gwilson@sample.com', 'e67a0311df4d7de4eb50c3fc1e012b4823a6917d', 'Teacher');
+(12, 'TCU Admin', 'admin', '8cb2237d0679ca88db6464eac60da96345513964', 'Administrator'),
+(13, 'Sarah', 'sarahroselimsison@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', 'Teacher'),
+(14, 'hhk', 'hhj', '3da541559918a808c2402bba5012f6c60b27661c', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -767,110 +655,91 @@ ALTER TABLE `useraccounts`
 --
 ALTER TABLE `ay`
   MODIFY `AY_ID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `CLASS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+  MODIFY `CLASS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `COURSE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
-
+  MODIFY `COURSE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `DEPT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `DEPT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `grades`
 --
 ALTER TABLE `grades`
-  MODIFY `GRADE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
-
+  MODIFY `GRADE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `INST_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `INST_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
   MODIFY `YR_ID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `major`
 --
 ALTER TABLE `major`
-  MODIFY `MAJOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `MAJOR_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `photo`
 --
 ALTER TABLE `photo`
   MODIFY `PHOTO_ID` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `ROOM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `ROOM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `schoolyr`
 --
 ALTER TABLE `schoolyr`
-  MODIFY `SYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `SYID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `SEM_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `SEM_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `studentsubjects`
 --
 ALTER TABLE `studentsubjects`
-  MODIFY `STUDSUBJ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
+  MODIFY `STUDSUBJ_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `SUBJ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=477;
-
+  MODIFY `SUBJ_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541;
 --
 -- AUTO_INCREMENT for table `tblrequirements`
 --
 ALTER TABLE `tblrequirements`
-  MODIFY `REQ_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
-
+  MODIFY `REQ_ID` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tblstuddetails`
 --
 ALTER TABLE `tblstuddetails`
-  MODIFY `DETAIL_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
-
+  MODIFY `DETAIL_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 --
 -- AUTO_INCREMENT for table `tblstudent`
 --
 ALTER TABLE `tblstudent`
-  MODIFY `S_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
-
+  MODIFY `S_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT for table `useraccounts`
 --
 ALTER TABLE `useraccounts`
-  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
-
+  MODIFY `ACCOUNT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
