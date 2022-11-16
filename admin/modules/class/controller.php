@@ -32,7 +32,7 @@ function doupdatetime(){
 		
 
 		$instClass = new InstructorClasses();
-		$Subjectid		= $_GET['id'];
+		//$Subjectid		= $_GET['id'];
 		$subjcode   	= $_POST['subjcode'];
 		$day 			= $_POST['day'];
 		//$rm 			= $_POST['rmname'];

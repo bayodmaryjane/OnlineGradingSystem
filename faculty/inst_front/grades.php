@@ -77,12 +77,28 @@ $cur = $grade->single_grades($gradeId);
               </div>
             </div>
           </div>
-        
-          
            <div class="form-group">
             <div class="col-md-8">
               <label class="col-md-4 control-label" for=
-              "finalave">Average</label>
+              "third">Third Grading</label>
+              <div class="col-md-8">
+                 <input class="form-control input-sm" id="third" name="third"  onkeyup="calculate();javascript:checkNumber(this);"  type="text" value="<?php echo (isset($cur)) ? $cur->THIRD  : 'THIRD' ;?>">
+              </div>
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="col-md-8">
+              <label class="col-md-4 control-label" for=
+              "fourth">Fourth Grading</label>
+              <div class="col-md-8">
+                 <input class="form-control input-sm" id="fourth" name="fourth"  onkeyup="calculate();javascript:checkNumber(this);"  type="text" value="<?php echo (isset($cur)) ? $cur->FOURTH  : 'FOURTH' ;?>">
+              </div>
+            </div>
+          </div>
+           <div class="form-group">
+            <div class="col-md-8">
+              <label class="col-md-4 control-label" for=
+              "finalave">Final Average</label>
               <div class="col-md-8">
                  <input class="form-control input-sm" id="finalave" name="finalave" readonly    type="text" value="<?php echo (isset($cur)) ? $cur->AVE  : 'AVE' ;?>">
               </div>

@@ -13,7 +13,7 @@
      					 <div class="form-group">
 			              <label >ID Number*</label>  
 			                 <input class="form-control input-sm" id="idno" name="idno" placeholder=
-												  "ID Number" type="text" value="<?php echo $cur->IDNO; ?>" readonly>
+												  "ID Number" type="number" value="<?php echo $cur->IDNO; ?>" readonly>
 			              </div> 
 			            </div>  
 			         
@@ -162,84 +162,8 @@
 				<fieldset>
 				<legend>Secondary Details</legend>
  
-		            <div class="row">
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "father">Father </label> 
-			                 <input class="form-control input-sm" id="father" name="father" type=
-		                  "text" placeholder="Father" value="<?php echo $det->FATHER; ?>">
-		                </div>
-		              </div>
 
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "fOccu">Occupation </label> 
-		                  <input class="form-control input-sm" id="fOccu" name="fOccu" type="text" placeholder="Occupation" value="<?php echo $det->FATHER_OCCU; ?>">
-		                </div>
-		              </div>
-		              
-		          </div> 
-
-				<div class="form-group">
-		            <div class="row">
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "mother">Mother </label> 
-			                 <input class="form-control input-sm" id="mother" name="mother" type=
-		                  "text" placeholder="Mother" value="<?php echo $det->MOTHER; ?>">
-		                </div>
-		              </div>
-
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "mOccu">Occupation </label> 
-		                  <input class="form-control input-sm" id="mOccu" name="mOccu" type="text" placeholder="Occupation" value="<?php echo $det->MOTHER_OCCU; ?>">
-		                </div>
-		              </div>
-		              
-		          </div>
-		          </div>
-				<div class="form-group">
-		            <div class="row">
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "boarding">Are you Boarding? </label> 
-			                   <div class="">
-                          		 <label><input checked id="boarding"name="boarding" type=
-                          "radio" value="Yes" checked="checked" >Yes</label>
-                        	   </div>
-			                  <div class="">
-                          		 <label><input checked id="boarding" name="boarding" type=
-                          "radio" value="No" <?php echo ($det->BOARDING=='No')? 'checked ="checked"':''; ?>>No</label>
-                        	   </div>
-
-							
-		                </div>
-		              </div>
-
-		              <div class="col-md-6">
-      					<div class="form-group">
-		                <label for=
-		                "withfamily">With Family?</label> 
-		              <div class="">
-                          		 <label><input checked id="withfamily" name="withfamily" type=
-                          "radio" value="Yes">Yes</label>
-                        	   </div>
-			                  <div class="">
-                          		 <label><input checked id="withfamily" name="withfamily" type=
-                          "radio" value="No">No</label>
-                        	   </div>
-		                </div>
-		                </div>
-		              </div>
-
-
-		          </div>
+				
 				<div class="form-group">
 		            <div class="row">
 		              <div class="col-md-6">
@@ -284,7 +208,7 @@
 		              
 		          </div>
 		          </div>
-		          
+		        <!--  
 				</fieldset>	
 				<?php
 				$req = new Requirements();
@@ -359,7 +283,7 @@
 
 		          </div>
 
-				</fieldset>	
+				</fieldset>	-->
 				<div class="form-group">
 		            <div class="row">
 		              <div class="col-md-6">
@@ -382,6 +306,7 @@ if($_SESSION['ACCOUNT_TYPE']=='Administrator'){
 		          </div>
 		          </div>
 					
+                    </fieldset>
 				</form>
 			<!--	</div><!--End of well-->
 

@@ -6,7 +6,32 @@ $cur = $grade->single_grades($gradeId);
 
 	$subjid = $cur->SUBJ_ID;
 	$studentId = $cur->IDNO;
+
+
+//$con=mysqli_connect('localhost','root','','dbgrading');
+
+//    function str_openssl_enc($str,$iv) {
+//    $key='tcusis';
+//    $chiper="AES-128-CTR";
+//    $options=0;
+//    $str=openssl_encrypt($str, $chiper, $key, $options, $iv);
+//    return $str;
+//}
+
+//    if(isset($_POST['savegrades'])){
+//    $iv=openssl_random_pseudo_bytes(16);
+//    $first=mysqli_real_escape_string($con, $_POST['first']);
+//    $second=mysqli_real_escape_string($con, $_POST['second']);
+    
+//    $first=str_openssl_enc($first, $iv);
+//    $second=str_openssl_enc($second,$iv);
+    
+//}
+
+
+
 ?>
+
 <form class="form-horizontal well span4" action="controller.php?action=grade&classId=<?php echo $_GET['classId'];?>&gradeId=<?php echo $_GET['gradeId'];?>&instructorId=<?php echo $_GET['instructorId'];?>" method="POST">
 
 	<fieldset>
@@ -60,47 +85,73 @@ $cur = $grade->single_grades($gradeId);
            <div class="form-group">
             <div class="col-md-8">
               <label class="col-md-4 control-label" for=
-              "first">First Grading</label>
+              "first">Midterm</label>
 
               <div class="col-md-8">
-                 <input class="form-control input-sm" id="first" name="first"  onkeyup="calculate();javascript:checkNumber(this);"  type="text" value="<?php echo (isset($cur)) ? $cur->FIRST  : 'FIRST' ;?>">
+                          <select class="form-control input-sm" id="first" name="first" value="<?php echo (isset($cur)) ? $cur->FIRST  : 'FIRST' ;?>">
+                          <option value="1.00">1.00</option>
+                          <option value="1.25">1.25</option>
+                          <option value="1.50">1.50</option>
+                          <option value="1.75">1.75</option>
+                          <option value="2.00">2.00</option>
+                          <option value="2.25">2.25</option>
+                          <option value="2.50">2.50</option>
+                          <option value="2.75">2.75</option>
+                          <option value="3.00">3.00</option>
+                          <option value="5.00">5.00</option>
+                          <option value="INC">INC</option>
+                          <option value="UD">UD</option>
+                          <option value="D">D</option>
+                    </select>
               </div>
             </div>
           </div>
            <div class="form-group">
             <div class="col-md-8">
               <label class="col-md-4 control-label" for=
-              "second">Second Grading</label>
+              "second">Finals</label>
 
               <div class="col-md-8">
-                 <input class="form-control input-sm" id="second" name="second"  onkeyup="calculate();javascript:checkNumber(this);"    type="text" value="<?php echo (isset($cur)) ? $cur->SECOND  : 'SECOND' ;?>">
+                  <select class="form-control input-sm" id="second" name="second" value="<?php echo (isset($cur)) ? $cur->SECOND  : 'SECOND' ;?>">
+                          <option value="1.00">1.00</option>
+                          <option value="1.25">1.25</option>
+                          <option value="1.50">1.50</option>
+                          <option value="1.75">1.75</option>
+                          <option value="2.00">2.00</option>
+                          <option value="2.25">2.25</option>
+                          <option value="2.50">2.50</option>
+                          <option value="2.75">2.75</option>
+                          <option value="3.00">3.00</option>
+                          <option value="5.00">5.00</option>
+                          <option value="INC">INC</option>
+                          <option value="UD">UD</option>
+                          <option value="D">D</option>
+                    </select>
               </div>
             </div>
           </div>
            <div class="form-group">
             <div class="col-md-8">
               <label class="col-md-4 control-label" for=
-              "third">Third Grading</label>
+              "finalave">Average</label>
               <div class="col-md-8">
-                 <input class="form-control input-sm" id="third" name="third"  onkeyup="calculate();javascript:checkNumber(this);"  type="text" value="<?php echo (isset($cur)) ? $cur->THIRD  : 'THIRD' ;?>">
-              </div>
-            </div>
-          </div>
-           <div class="form-group">
-            <div class="col-md-8">
-              <label class="col-md-4 control-label" for=
-              "fourth">Fourth Grading</label>
-              <div class="col-md-8">
-                 <input class="form-control input-sm" id="fourth" name="fourth"  onkeyup="calculate();javascript:checkNumber(this);"  type="text" value="<?php echo (isset($cur)) ? $cur->FOURTH  : 'FOURTH' ;?>">
-              </div>
-            </div>
-          </div>
-           <div class="form-group">
-            <div class="col-md-8">
-              <label class="col-md-4 control-label" for=
-              "finalave">Final Average</label>
-              <div class="col-md-8">
-                 <input class="form-control input-sm" id="finalave" name="finalave" readonly    type="text" value="<?php echo (isset($cur)) ? $cur->AVE  : 'AVE' ;?>">
+                  
+                  <select class="form-control input-sm" id="finalave" name="finalave"  value="<?php echo (isset($cur)) ? $cur->AVE  : 'AVE' ;?>">
+                          <option value="1.00">1.00</option>
+                          <option value="1.25">1.25</option>
+                          <option value="1.50">1.50</option>
+                          <option value="1.75">1.75</option>
+                          <option value="2.00">2.00</option>
+                          <option value="2.25">2.25</option>
+                          <option value="2.50">2.50</option>
+                          <option value="2.75">2.75</option>
+                          <option value="3.00">3.00</option>
+                          <option value="5.00">5.00</option>
+                          <option value="INC">INC</option>
+                          <option value="UD">UD</option>
+                          <option value="D">D</option>
+                    </select>
+                  
               </div>
             </div>
           </div>

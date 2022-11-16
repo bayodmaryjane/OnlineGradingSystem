@@ -6,9 +6,9 @@
 					<caption><h3 align="left">Student Enrollment Records</h3></caption>
 				  <thead>
 				  	<tr>
-				  		<th> <input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');"> Grade and Section</th>
+				  		<th> <input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');"> Year/Sem</th>
 				  	<!--	<th>Semester</th>-->
-				  		<th>Schoolyr</th>
+				  		<th>School Year</th>
 				  		<th>Status</th>
 				  		<th>Date Enrolled</th>
 				  		<th>Options</th>
@@ -32,6 +32,7 @@
 				  		echo '<td>'. $schoolyr->STATUS.'</td>';
 				  		echo '<td>'. $schoolyr->DATE_RESERVED.'</td>';
 				  		echo '<td><a href = "index.php?view=subject&studentId='.$schoolyr->IDNO.'&cid='.$schoolyr->COURSE_ID.'&sy='.$schoolyr->SYID.'">Enrolled Subjects</a></td>';
+                        //echo '<a href = "index.php?view=view&studentId='.$schoolyr->COE.'" ><span class="glyphicon glyphicon-list-alt"> </span> Upload File </a></td>';
 				  		echo '</tr>';
 				  	} 
 				  	?>

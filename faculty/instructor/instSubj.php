@@ -53,7 +53,7 @@
 				  		<th class="bottom">Description</th>
 				  		<!--<th class="bottom">Semester</th>
 				 		<th class="bottom">Course</th>-->
-				 		<th class="bottom">Year/Sem</th>
+				 		<th class="bottom">Grade Level</th>
 				 	<!--	<th class="bottom">Pre-requisite</th>
 				 		<th align="center" class="bottom">Unit</th>  -->
 				 		<th class="bottom">Room</th>

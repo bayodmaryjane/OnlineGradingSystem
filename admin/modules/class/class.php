@@ -58,11 +58,9 @@
 				  	<!--	<th>Age</th>
 				  		<th>Birth Date</th>
 				  		<th>Status</th>-->
-				  		<th>1st</th>
-				  		<th>2nd</th>
-				  		<th>3rd</th>
-				  		<th>4th</th>
-						<th>Final</th>				  		
+				  		<th>Midterm</th>
+				  		<th>FInals</th>
+						<th>Average</th>				  		
 				  		<th>Remarks</th>
 				  	</tr>	
 				  </thead>
@@ -94,8 +92,6 @@
 					  		echo '<td>'. $student->STATUS.'</td>';*/
 					  		echo '<td>'.$student->FIRST.'</td>';
 					  		echo '<td>'. $student->SECOND.'</td>';
-					  		echo '<td>'. $student->THIRD.'</td>';
-					  		echo '<td>'. $student->FOURTH.'</td>';
 					  		echo '<td>'. $student->AVE.'</td>';  
 					  		echo '<td>'. $student->REMARKS.'</td>';  
 					  		echo '</tr>';

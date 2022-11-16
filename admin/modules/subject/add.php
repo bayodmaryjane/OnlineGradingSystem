@@ -35,7 +35,7 @@
 
                 <div class="col-md-8">
                    <input class="form-control input-sm" id="unit" name="unit" placeholder=
-                      "No of units" type="number" value="">
+                      "No of units" type="text" value="">
                 </div>
               </div>
             </div>

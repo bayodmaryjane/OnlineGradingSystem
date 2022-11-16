@@ -11,6 +11,7 @@
 				  		 Fullname</th>
 				  		<th>Address</th>
 				  		<th>Gender</th>
+				  		<th>Civil Status</th>
 				  		<th>Specialization</th>
 				 		<th>Email Address</th>
 				 		<th></th>
@@ -38,13 +39,13 @@
 						  		echo '<tr>';
 						  		echo '<td width="5%" align="center"></td>';
 						  		echo '<td><input type="checkbox" name="selector[]" id="selector[]" value="'.$result->INST_ID. '"/>
-						  				' . $result->INST_FULLNAME.'</td>';
+						  				<a href="index.php?view=edit&id='.$result->INST_ID.'">' . $result->INST_FULLNAME.'</a></td>';
 						  		echo '<td>'. $result->INST_ADDRESS.'</td>';
 						  		echo '<td>'. $result->INST_SEX.'</td>';
+						  		echo '<td>'. $result->INST_STATUS.'</td>';
 						  		echo '<td>'. $result->SPECIALIZATION.'</td>';
 						  		echo '<td>'. $result->INST_EMAIL.'</td>';
-					 			echo '<td><a href="index.php?view=instSubj&instructorId='.$result->INST_ID.'">List of Loads</a>';
-                                echo '<a href="index.php?view=edit&id='.$result->INST_ID.'"> Edit</a></td>';
+					 			echo '<td><a href="index.php?view=instSubj&instructorId='.$result->INST_ID.'">List of Loads</a></td>';
 						  		
 						  		
 						  		echo '</tr>';

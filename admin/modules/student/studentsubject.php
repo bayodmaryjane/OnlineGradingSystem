@@ -84,11 +84,9 @@
 								  			?>								  		 
 								  		 							  	
 								  		<th class="bottom">Description</th>
-								  		<th>1st</th>
-								  		<th>2nd</th>
-								  		<th>3rd</th>
-								  		<th>4th</th>
-										<th>Final</th>				  		
+								  		<th>Midterm</th>
+								  		<th>Finals</th>
+										<th>Average</th>				  		
 								  		<th>Remarks</th>
 								  	<!--	<th class="bottom">Semester</th>
 								 		<th class="bottom">Department</th>
@@ -118,8 +116,6 @@
 										  		echo '<td width="30%">'. $result->SUBJ_DESCRIPTION.'</td>';
 									  			echo '<td>'.$result->FIRST.'</td>';
 										  		echo '<td>'. $result->SECOND.'</td>';
-										  		echo '<td>'. $result->THIRD.'</td>';
-										  		echo '<td>'. $result->FOURTH.'</td>';
 										  		echo '<td>'. $result->AVE.'</td>';  
 										  		echo '<td>'. $result->REMARKS.'</td>';  	
 										  	//	echo '<td>'. $result->SEMESTER.'</td>';

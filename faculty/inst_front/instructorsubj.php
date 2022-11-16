@@ -1,13 +1,13 @@
 <div class="row">
 
   <div class="col-12 col-sm-12 col-lg-12">
-	<?php
+	<?php 
 
-  	 if (isset($_GET['instructorId'])){			
-			$instructor = new Instructor();
-			$cur = $instructor->single_instructor($_GET['instructorId']);			
-		}
-	  ?>
+				$mydb->setQuery("SELECT * 
+									FROM instructor
+									WHERE  `INST_EMAIL` ='{$_SESSION['ACCOUNT_USERNAME']}'");
+				$inst = $mydb->loadSingleResult();
+			?>
  
 <form class="form-horizontal span4" action="controller.php?action=delsubj" method="POST">
 	<div class="panel panel-primary">
@@ -27,11 +27,11 @@
 		     	<tr>
 		     		<td>
 		     			<p>
-				     		<b>Full Name : </b><?php echo (isset($cur)) ? $cur->INST_FULLNAME : 'Fullname' ;?><br/>
-				     		<b>Sex : </b><?php echo (isset($cur)) ? $cur->INST_SEX  : 'Sex' ;?><br/>
-				     		<b>Employment Status : </b><?php echo (isset($cur)) ? $cur->EMPLOYMENT_STATUS : 'EMPLOYMENT STATUS' ;?><br/>
-				     		<b>Specialization : </b><?php echo (isset($cur)) ? $cur->SPECIALIZATION : 'SPECIALIZATION' ;?><br/>
-				     		<b>Address : </b><?php echo (isset($cur)) ? $cur->INST_ADDRESS : 'Address' ;?>
+				     		<b>Full Name : </b><?php echo (isset($inst)) ? $inst->INST_FULLNAME : 'Fullname' ;?><br/>
+				     		<b>Sex : </b><?php echo (isset($inst)) ? $inst->INST_SEX  : 'Sex' ;?><br/>
+				     		<b>Employment Status : </b><?php echo (isset($inst)) ? $inst->EMPLOYMENT_STATUS : 'EMPLOYMENT STATUS' ;?><br/>
+				     		<b>Specialization : </b><?php echo (isset($inst)) ? $inst->SPECIALIZATION : 'SPECIALIZATION' ;?><br/>
+				     		<b>Address : </b><?php echo (isset($inst)) ? $inst->INST_ADDRESS : 'Address' ;?>
 
 		     			</p>
 		     		</td>
@@ -53,7 +53,7 @@
 				  		<th class="bottom">Description</th>
 				  		<!--<th class="bottom">Semester</th>
 				 		<th class="bottom">Course</th>-->
-				 		<th class="bottom">Year/Sem</th>
+				 		<th class="bottom">Grade Level</th>
 				 	<!--	<th class="bottom">Pre-requisite</th>
 				 		<th align="center" class="bottom">Unit</th>  -->
 				 		<th class="bottom">Room</th>
@@ -70,7 +70,7 @@
 								FROM  `subject` s,  `course` c  ,class cl
 								WHERE s.`COURSE_ID` = c.`COURSE_ID` 
 								AND s.`SUBJ_ID`=cl.`SUBJ_ID` 
-								AND  `INST_ID` = ".$_GET['instructorId']."");
+								AND  `INST_ID` = ".$inst->INST_ID."");
 						$cur = $mydb->loadResultlist();
 						foreach ($cur as $result) {
 

@@ -13,7 +13,7 @@
 				  	<!--	<th>Unit</th>
 				  		<th>Pre-requisite</th>
 				  		<th>Semester</th>-->
-				 		<th>Year/Sem</th>
+				 		<th>Grade Level</th>
 				 	<!--	<th>Level</th>-->
 				 		<th>Status</th>
 				  	</tr>	

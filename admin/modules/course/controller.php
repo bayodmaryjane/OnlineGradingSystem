@@ -30,10 +30,11 @@ function doInsert(){
 		$course = new Course();
 		$coursename   	= $_POST['coursename'];
 		$courselevel   	= $_POST['level'];
-		$coursemajor   	= $_POST['major'];
+		//$coursemajor   	= $_POST['major'];
 		$coursedesc 	= $_POST['coursedesc'];
 		$coursedept		= $_POST['dept'];
-		$res = $course->find_all_course($coursename, $courselevel, $coursemajor);
+		$res = $course->find_all_course($coursename, $courselevel);
+        //$res = $course->find_all_course($coursename, $courselevel, $coursemajor);
 				
 		if ($res >=1) {
 			message("Course name already exist!","error");
@@ -41,7 +42,7 @@ function doInsert(){
 		}else{
 			$course->COURSE_NAME = $coursename;
 			$course->COURSE_LEVEL = $courselevel;
-			$course->COURSE_MAJOR = $coursemajor;
+			//$course->COURSE_MAJOR = $coursemajor;
 			$course->COURSE_DESC = $coursedesc;
 			$course->DEPT_ID = $coursedept;	
 			 $istrue = $course->create(); 

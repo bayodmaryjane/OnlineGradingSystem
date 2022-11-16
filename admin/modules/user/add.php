@@ -25,7 +25,7 @@
                       <div class="col-md-8">
                         <input name="deptid" type="hidden" value="">
                          <input class="form-control input-sm" id="username" name="username" placeholder=
-                            "Email Address" type="text" value="">
+                            "Username" type="text" value="">
                       </div>
                     </div>
                   </div>

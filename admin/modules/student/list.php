@@ -7,8 +7,8 @@
 				  <thead>
 				  	<tr>
 				  		<th>No.</th>
-				  		<th width="10%" align="left"><input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');"> ID#.</th>
-				  		<th>Fullname</th>
+				  		<th width="10%" align="left"><input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');"> StudID </th>
+				  		<th>Full Name</th>
 				  		<th>Sex</th>
 				  		<th>Age</th>
 				  		<th>Birth Date</th>
@@ -31,14 +31,14 @@
 							foreach ($cur as $student) {
 					  		echo '<tr>';
 					  		echo '<td width="5%" align="center"></td>';
-					  		echo '<td width="10%"><input type="checkbox" name="selector[]" id="selector[]" value="'.$student->IDNO. '"/>
-					  				<a href="index.php?view=edit&id='.$student->IDNO.'">' . $student->IDNO.'</a></td>';
+					  		echo '<td width="10%"><input type="checkbox" name="selector[]" id="selector[]" value="'.$student->IDNO. '"/>' . $student->IDNO.'</td>';
 					  		echo '<td  >'. $student->Name.'</td>';
 					  		echo '<td align="center">'. $student->SEX.'</td>';
 					  		echo '<td  align="center">'. $student->AGE.'</td>';
 					  		echo '<td  align="center">'. $student->BDAY.'</td>';
 					  		echo '<td>'. $student->EMAIL.'</td>';
-					  		echo '<td><a href = "index.php?view=view&studentId='.$student->IDNO.'" ><span class="glyphicon glyphicon-list-alt"> </span>  View</a></td>';
+					  		echo '<td><a href="index.php?view=edit&id='.$student->IDNO.'"><span class="glyphicon glyphicon-list-alt"> </span>  Edit</a>';
+                            echo '<a href = "index.php?view=view&studentId='.$student->IDNO.'" ><span class="glyphicon glyphicon-list-alt"> </span>  View</a></td>';
 					  		echo '</tr>';
 					  		}
 

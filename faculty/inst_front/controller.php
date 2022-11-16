@@ -24,29 +24,17 @@ switch ($action) {
 	break;
 	case 'grade':
 	savegrade();
-        
 	break;
 	}
-
 function savegrade(){
+	if (isset($_POST['savegrades'])){
 
-    if (isset($_POST['savegrades'])){
-        
-        
-    if ($_POST['finalave']>=1 AND $_POST['finalave']<=3){
+	if ($_POST['finalave']>=75 AND $_POST['finalave']<=100){
 		$remarks = "Passed";
-    }elseif ($_POST['finalave']=='INC') {
-        $remarks= "INC";
-    }elseif ($_POST['finalave']=='UD') {
-        $remarks= "UD";
-    }elseif ($_POST['finalave']=='D') {
-        $remarks= "D";
 	}else{
 		$remarks= "Failed";
 	}
 
-        echo encrypt($_POST['savegrades']);
-            
 			$instClass = New InstructorClasses();
 			$cur = $instClass->single_class($_GET['classId']);
 
@@ -54,7 +42,9 @@ function savegrade(){
 		$grade = new Grades();
 		$grade->INST_ID 	= $cur->INST_ID;
 		$grade->FIRST 		= $_POST['first'];
-		$grade->SECOND 		= $_POST['second'];;
+		$grade->SECOND 		= $_POST['second'];
+		$grade->THIRD 		= $_POST['third'];
+		$grade->FOURTH 		= $_POST['fourth'];
 		$grade->AVE	  	= $_POST['finalave'];
 		$grade->REMARKS 	= $remarks;
 		$grade->update($_GET['gradeId']);		 

@@ -1,5 +1,5 @@
 <div class="wells">
-		<h3 align="left">List of Subject</h3>
+		<h3 align="left">List of Subjects</h3>
 			    <form action="controller.php?action=delete" Method="POST">  					
 				<table id="example" class="table table-striped" cellspacing="0">
 				
@@ -13,7 +13,8 @@
 				  			<!--<th>Unit</th>
 				  	<th>Pre-requisite</th>
 				  		<th>Semester</th>-->
-				 		<th>Grade Level</th>
+				 		<th>Year/Sem</th>
+				 		<th>Action</th>
 				 	<!--	<th>Level</th>-->
 				  	</tr>	
 				  </thead>
@@ -31,14 +32,14 @@
 							foreach ($cur as $result) {
 						  		echo '<tr>';
 						  		echo '<td width="5%" align="center"></td>';
-						  		echo '<td ><input type="checkbox" name="selector[]" id="selector[]" value="'.$result->SUBJ_ID. '"/>
-						  				<a href="index.php?view=edit&id='.$result->SUBJ_ID.'">' . $result->SUBJ_CODE.'</a></td>';
+						  		echo '<td ><input type="checkbox" name="selector[]" id="selector[]" value="'.$result->SUBJ_ID. '"/>' . $result->SUBJ_CODE.'</a></td>';
 						  		echo '<td >'. $result->SUBJ_DESCRIPTION.'</td>';
 						  		//echo '<td>'. $result->UNIT.'</td>';
 						  		//echo '<td>'. $result->PRE_REQUISITE.'</td>';
 						  		//echo '<td>'. $result->SEMESTER.'</td>';
 						  		echo '<td>'. $result->COURSE_NAME.'</td>';
 						  		//echo '<td>'. $result->COURSE_LEVEL.'</td>';
+                                echo '<td><a href="index.php?view=edit&id='.$result->SUBJ_ID.'"> Edit </a></td>';
 
 						  		echo '</tr>';
 					  		}

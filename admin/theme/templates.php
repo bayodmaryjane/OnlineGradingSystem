@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="plugins/assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="plugins/assets/img/favicon.png">
+ <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Online Grading System
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); "/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
   <link href="<?php echo WEB_ROOT; ?>plugins/assets/css/bootstrap.min.css" rel="stylesheet" /> 
@@ -35,69 +35,69 @@ table {
  confirm_logged_in();
 
   ?>
-</h
+
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange">
+    <div class="sidebar" data-color="red">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      <div class="logo" style="text-align: center;"> 
-        <a href="<?php echo WEB_ROOT; ?>admin/index.php" class="simple-text logo-normal">
-         Online Grading System
+      <div class="logo" style="text-align: center;" >
+        <a href="<?php echo WEB_ROOT; ?>admin/index.php" class="simple-text logo-normal" style="font-style:poppins; font-size:20px;"><img src="<?php echo (!empty($user['photo'])) ? '../images/'.$user['photo'] : '../images/tculogo.png'; ?>" style="margin-right:10px width:45px;   height:45px;"
+>TCUSIS
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
             <li class="<?php echo (currentpage_admin() == '') ? "active" : false;?>"><a href="<?php echo WEB_ROOT; ?>admin/index.php"> 
-              <i class="now-ui-icons design_app"></i>
-              <p>Home</p>
+             <i class='bx bx-home-alt' ></i>
+              <p style="font-style:poppins; font-size:12px;">Home</p>
             </a></li> 
               <?php if($_SESSION['ACCOUNT_TYPE']=='Administrator'){ 
                 ?> 
               <li class="<?php echo (currentpage_admin() == 'student') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/student/index.php">
-                    <i class="now-ui-icons business_badge"></i>
-                    <p>Students</p>
+                    <i class='bx bx-user'></i>
+                    <p style="font-style:poppins; font-size:12px;">Students</p>
                 </a>
               </li>
               <li class="<?php echo (currentpage_admin() == 'subject') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/subject/index.php">
-                    <i class="now-ui-icons education_agenda-bookmark"></i>
-                    <p>Subjects</p> 
+                    <i class='bx bxs-book-bookmark'></i>
+                    <p style="font-style:poppins; font-size:12px;">Subjects</p> 
                 </a>
               </li>
               <li class="<?php echo (currentpage_admin() == 'course') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/course/index.php">
-                    <i class="now-ui-icons business_chart-bar-32"></i>
-                    <p>Grade level</p>  
+                    <i class='bx bxs-objects-vertical-bottom'></i>
+                    <p style="font-style:poppins; font-size:12px;">Year/Sem</p>  
                 </a>
               </li>
               <li class="<?php echo (currentpage_admin() == 'instructor') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/instructor/index.php">
-                    <i class="now-ui-icons users_circle-08"></i>
-                    <p>Faculty</p>  
+                   <i class='bx bx-user-circle' ></i>
+                    <p style="font-style:poppins; font-size:12px;">Faculty</p>  
                 </a>
               </li>
               <li class="<?php echo (currentpage_admin() == 'department') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/department/index.php">
-                    <i class="now-ui-icons business_bank"></i>
-                    <p>Department</p>  
+                   <i class='bx bxs-building'></i>
+                    <p style="font-style:poppins; font-size:12px;">Department</p>  
                 </a>
               </li>
               <li class="<?php echo (currentpage_admin() == 'room') ? "active" : false;?>">
                 <a href="<?php echo WEB_ROOT; ?>admin/modules/room/index.php">
-                    <i class="now-ui-icons shopping_box"></i>
-                    <p>Rooms</p>  
+                   <i class='bx bx-store-alt'></i>
+                    <p style="font-style:poppins; font-size:12px;">Rooms</p>  
                 </a>
               </li>
               
                  <li  class="<?php echo (currentpage_admin() == 'class') ? "active" : false;?>">
                     <a href="<?php echo WEB_ROOT; ?>admin/modules/class/index.php">
-                      <i class="now-ui-icons design_bullet-list-67"></i>
-                      <p>Class</p>   
+                     <i class='bx bxs-buildings'></i>
+                      <p style="font-style:poppins; font-size:12px;">Class</p>   
                    </a>
-                 </li>  
+                 </li>   
 
                 
                <?php
@@ -108,19 +108,38 @@ table {
                    <li class="<?php echo (currentpage_admin() == 'inst_front') ? "active" : false;?>">
                     <a href="<?php echo WEB_ROOT; ?>admin/modules/inst_front/index.php?view=record">
                       <i class="now-ui-icons users_single-02"></i>
-                      <p>Record</p>    
+                      <p style="font-style:poppins; font-size:12px;">Record</p>    
                     </a>
                    </li>  
               <?php
-              }?>        
+              }?> 
+            
+            <?php if($_SESSION['ACCOUNT_TYPE']=='Teacher'){ 
+                ?>
+            <li  class="<?php echo (currentpage_admin() == 'logout') ? "active" : false;?>">
+                    <a href="<?php echo WEB_ROOT; ?>admin/logout.php">
+                      <i class=""></i>
+                      <p style="font-style:poppins; font-size:12px;">Logout</p>   
+                   </a>
+                 </li>
+            <?php
+              }?> 
+            
+            
                  <?php if($_SESSION['ACCOUNT_TYPE']=='Administrator'){ 
                 ?>
                 <li class="<?php echo (currentpage_admin() == 'user') ? "active" : false;?>">
                   <a href="<?php echo WEB_ROOT; ?>admin/modules/user/index.php">
-                      <i class="now-ui-icons users_single-02"></i>
-                      <p>Manage Users</p>     
+                       <i class='bx bx-user'></i>
+                      <p style="font-style:poppins; font-size:14px;">Manage Users</p>     
                   </a>
                 </li>
+                <li  class="<?php echo (currentpage_admin() == 'logout') ? "active" : false;?>">
+                    <a href="<?php echo WEB_ROOT; ?>admin/logout.php">
+                     <i class='bx bx-log-out-circle'></i>
+                      <p style="font-style:poppins; font-size:12px;">Logout</p>   
+                   </a>
+                 </li> 
                  <?php
               }?> 
                 <!-- <li><a href="<?php echo WEB_ROOT; ?>admin/logout.php">Logout</a></li>  -->
@@ -130,65 +149,8 @@ table {
     </div>
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand" href="#pablo">Online Grading System</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <form>
-              <div class="input-group no-border">
-                <input type="text" value="" class="form-control" placeholder="Search...">
-                <div class="input-group-append">
-                  <div class="input-group-text">
-                    <i class="now-ui-icons ui-1_zoom-bold"></i>
-                  </div>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav">
-       <!--        <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="now-ui-icons media-2_sound-wave"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block">Stats</span>
-                  </p>
-                </a>
-              </li> -->
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="now-ui-icons users_single-02"></i>
-                  <p>
-                    <span class="d-lg-none d-md-block"><?Php echo $_SESSION['ACCOUNT_NAME'];?></span>
-                  </p>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink"> 
-                  <?php if($_SESSION['ACCOUNT_TYPE']=='Teacher') { ?> 
-                    <a href="<?php echo WEB_ROOT; ?>admin/modules/inst_front/index.php?view=prof">
-                      Profile 
-                    </a> 
-
-                <?php } ?>
-                  <a class="dropdown-item" href="<?php echo WEB_ROOT; ?>admin/logout.php">Logout</a>
-                </div>
-              </li> 
-            </ul>
-          </div>
-        </div>
-      </nav>
-        <div class="panel-header panel-header-sm">
+      
+        <div class="panel-header panel-header-sm" style="background:#780000;">
       </div>
 <div class="content">
   <div class="row">
@@ -205,37 +167,7 @@ table {
 </div>
       <!-- End Navbar -->
      
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav>
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="http://presentation.creative-tim.com">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright" id="copyright">
-            &copy;
-            <script>
-              document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by
-            <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
-          </div>
-        </div>
-      </footer>
+    
     </div>
   </div>
   <!--   Core JS Files   -->

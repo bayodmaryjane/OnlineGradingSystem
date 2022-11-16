@@ -43,8 +43,6 @@ function savegrade(){
 		$grade->INST_ID 	= $cur->INST_ID;
 		$grade->FIRST 		= $_POST['first'];
 		$grade->SECOND 		= $_POST['second'];
-		$grade->THIRD 		= $_POST['third'];
-		$grade->FOURTH 		= $_POST['fourth'];
 		$grade->AVE	  	= $_POST['finalave'];
 		$grade->REMARKS 	= $remarks;
 		$grade->update($_GET['gradeId']);		 

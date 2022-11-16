@@ -70,7 +70,7 @@ function doEnroll(){
 				$sy->STATUS = $Status;
 				$sy->SEMESTER = $Semester;
 				$sy->COURSE_ID = $course;
-				$sy->IDNO = $idno;
+        
 				$sy->DATE_RESERVED = $created;
 				
 				 $istrue = $sy->create();
@@ -203,10 +203,50 @@ if ($IDNO == "") {
 }elseif ($MNAME == "") {
 	message('Middle Name is required!', "error");
 	redirect ('index.php?view=add');
+}elseif ($SEX == "") {
+	message('Gender is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($BDAY   == "") {
+	message('Birthdate is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($BPLACE == "") {
+	message('Birth Place is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($STATUS == "") {
+	message('Status is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($AGE == "") {
+	message('Age is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($NATIONALITY == "") {
+	message('Nationality is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($RELIGION == "") {
+	message('Religion is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($CONTACT_NO == "") {
+	message('Contact No. is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($HOME_AD == "") {
+	message('Home Address is required!', "error");
+	redirect ('index.php?view=add');
 }elseif ($EMAIL == "") {
 	message('Email address is required!', "error");
 	redirect ('index.php?view=add');
-	
+    
+}elseif ($GUARDIAN == "") {
+	message('Guardian is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($GUARDIAN_ADDRESS == "") {
+	message('Guardian Address is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($OTHER_PERSON_SUPPORT == "") {
+	message('Other Person Supporting is required!', "error");
+	redirect ('index.php?view=add');
+}elseif ($ADDRESS == "") {
+	message('Address is required!', "error");
+	redirect ('index.php?view=add');
+    	
 }else{
 
 	$student->create(); 
@@ -272,24 +312,14 @@ $sy->IDNO 		= $IDNO;*/
 
 */  
 //secondary Details
-$FATHER 			= $_POST['father'];
-$FATHER_OCCU 		= $_POST['fOccu'];
-$MOTHER 			= $_POST['mother'];
-$MOTHER_OCCU 		= $_POST['mOccu'];
-$BOARDING 			= $_POST['boarding'];
-$WITH_FAMILY 		= $_POST['withfamily'];
+
 $GUARDIAN 			=  $_POST['guardian'];
 $GUARDIAN_ADDRESS 	=  $_POST['guardianAdd'];
 $OTHER_PERSON_SUPPORT = $_POST['otherperson'];
 $ADDRESS 			=  $_POST['otherAddress'];
 
 $studdetails = new Student_details();
-$studdetails->FATHER				=	$FATHER;
-$studdetails->FATHER_OCCU			=	$FATHER_OCCU;
-$studdetails->MOTHER				=	$MOTHER;
-$studdetails->MOTHER_OCCU			=	$MOTHER_OCCU;
-$studdetails->BOARDING			    =	$BOARDING;
-$studdetails->WITH_FAMILY			=	$WITH_FAMILY;
+
 $studdetails->GUARDIAN			    =	$GUARDIAN;
 $studdetails->GUARDIAN_ADDRESS		=	$GUARDIAN_ADDRESS;
 $studdetails->OTHER_PERSON_SUPPORT	=	$OTHER_PERSON_SUPPORT;
@@ -337,9 +367,13 @@ if ($IDNO == "") {
 }elseif ($MNAME == "") {
 	message('Middle Name is required!', "error");
 	redirect ('index.php?view=edit&id='.$IDNO);
+}elseif ($Bddd == "") {
+	message('Birth Place is required!', "error");
+	redirect ('index.php?view=add');
 }elseif ($EMAIL == "") {
 	message('Email address is required!', "error");
 	redirect ('index.php?view=edit&id='.$IDNO);
+    
 	
 }else{
 

@@ -17,7 +17,7 @@
 		        <form class="form-horizontal well span4" action="controller.php?action=updatetime&classId=<?php echo $_GET['classId'];?>" method="POST">
 
 					<fieldset>
-						<legend>Update Time</legend>
+						<legend>Update</legend>
 															
 
 							<div class="form-group">
@@ -69,7 +69,7 @@
 				           <div class="form-group">
 				            <div class="col-md-8">
 				              <label class="col-md-4 control-label" for=
-				              "course">Grade Level</label>
+				              "course">Year/Sem</label>
 
 				              <div class="col-md-8">
 				              <input class="form-control input-sm" id="course_name" name="course_name" readonly placeholder=

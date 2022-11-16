@@ -11,6 +11,7 @@
 				  	<tr>
 				  		<th> <input type="checkbox" name="chkall" id="chkall" onclick="return checkall('selector[]');"> Room Name</th>
 				  		<th>Department Description</th>
+                        <th>Action</th>
 				 
 				  	</tr>	
 				  </thead>
@@ -21,9 +22,9 @@
 						foreach ($cur as $Room) {
 				  		echo '<tr>';
 
-				  		echo '<td><input type="checkbox" name="selector[]" id="selector[]" value="'.$Room->ROOM_ID. '"/>
-				  				<a href="index.php?view=edit&id='.$Room->ROOM_ID.'">' . $Room->ROOM_NAME.'</a></td>';
-				  		echo '<td colspan="3">'. $Room->ROOM_DESC.'</td>';
+				  		echo '<td><input type="checkbox" name="selector[]" id="selector[]" value="'.$Room->ROOM_ID. '"/>' . $Room->ROOM_NAME.'</td>';
+				  		echo '<td>'. $Room->ROOM_DESC.'</td>';
+                        echo '<td><a href="index.php?view=edit&id='.$Room->ROOM_ID.'">Edit</a></td>';
 				  		echo '</tr>';
 				  	} 
 				  	?>
