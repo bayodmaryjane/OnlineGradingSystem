@@ -50,6 +50,15 @@
   .site-menu li a {
     color: #8F2A24;
   }
+  
+  .site-navbar .site-navigation .site-menu > li > a:hover {
+          color: #780000; }
+  .site-navbar .site-navigation .site-menu > li.active > a {
+        color: #780000 !important; 
+		}
+	.site-navbar .site-navigation .site-menu > li.active > a {
+		font-size:18px;
+	}
 </style>
 
       <header class="site-navbar site-navbar-target" role="banner">
@@ -59,7 +68,7 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="<?php echo WEB_ROOT; ?>">Grading System</a>
+                <a href="<?php echo WEB_ROOT; ?>" style="color:#780000; display:inline;"><img src="images/tculogo.png" style="width:40px; height:40px;">TCUSIS</a>
               </div>
             </div>
 
@@ -72,7 +81,8 @@
 
               <nav class="site-navigation  ml-auto d-none d-lg-block " role="navigation"  style="color: red" >
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="<?php echo WEB_ROOT; ?>">Home</a></li>
+                  <li class="active" style="font-size:18px; font-weight:600px; -webkit-text-stroke-color: #ffff; -webkit-text-stroke-width: 1px;"><a href="<?php echo WEB_ROOT; ?>">Home</a></li>
+                    <li><a href="<?php echo WEB_ROOT; ?>index.php?page=3">COE</a></li>
                   <li><a href="<?php echo WEB_ROOT; ?>index.php?page=3">List of Subjects</a></li>
                   <li><a href="<?php echo WEB_ROOT; ?>index.php?page=2">Student Info</a></li>
                   <li><a href="<?php echo WEB_ROOT; ?>logout.php">Logout</a></li>  
@@ -91,23 +101,7 @@
     <?php require_once $content;?>
     
 
-    <footer >
-      <div class="container">
-         
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </footer>
+  
 
     </div>
 

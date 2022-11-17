@@ -123,7 +123,7 @@
                       "idno"></label>
 
                       <div class="col-md-8">
-                        <button class="btn btn-default" name="savefaculty" type="submit" ><span class="glyphicon glyphicon-floppy-save"></span> Save</button>
+                        <button class="btn btn-default" name="savefaculty" type="submit" style="background-color:#780000;"><span class="glyphicon glyphicon-floppy-save" ></span> Save</button>
                       </div>
                     </div>
                   </div>

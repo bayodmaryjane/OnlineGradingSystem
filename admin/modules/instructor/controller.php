@@ -45,7 +45,7 @@ function savegrade(){
 		$remarks= "Failed";
 	}
 
-        echo encrypt($_POST['savegrades']);
+        //echo encrypt($_POST['savegrades']);
             
 			$instClass = New InstructorClasses();
 			$cur = $instClass->single_class($_GET['classId']);
@@ -139,7 +139,7 @@ if (isset($_POST['savefaculty'])){
 
 		$user = new User();
 		$acc_name		= $_POST['name'];
-		$acc_username   = $_POST['username'];
+//		$acc_username   = $_POST['username'];
 		$acc_password 	= $_POST['pass'];
 		$acc_type 		= 'Teacher';
 		$resuser = $user->find_all_user($acc_name);

@@ -1,6 +1,7 @@
  
-<div class="container" style="margin-top: 90px"> 
-	  <caption><h3 align="left">Student Enrollment Records</h3></caption>
+
+<div class="container" style="margin-top: 90px; border: 2px solid black; border-radius: 10px; background-color:white;"> 
+	  <caption><h3 align="left" style="margin-top:10px; color:#780000; font-size:35px;  font-family:Poppins; font-weight:1000px;">Student Enrollment Records</h3></caption>
 			    <form action="controller.php?action=delsy&studentId=<?php echo $_SESSION['IDNO']; ?>" Method="POST">  					
 				<table class="table table-hover">
 				  <thead>
@@ -27,7 +28,7 @@
 				  		echo '<td>'. $schoolyr->AY.'</td>';
 				  		echo '<td>'. $schoolyr->STATUS.'</td>';
 				  		echo '<td>'. $schoolyr->DATE_RESERVED.'</td>';
-				  		echo '<td><a href = "index.php?page=4&studentId='.$schoolyr->IDNO.'&cid='.$schoolyr->COURSE_ID.'&sy='.$schoolyr->SYID.'">Enrolled Subjects</a></td>';
+				  		echo '<td ><a href = "index.php?page=4&studentId='.$schoolyr->IDNO.'&cid='.$schoolyr->COURSE_ID.'&sy='.$schoolyr->SYID.'" style="color:#780000; font-weight:700px;">Enrolled Subjects</a></td>';
 				  		echo '</tr>';
 				  	} 
 				  	?>

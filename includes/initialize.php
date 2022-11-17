@@ -34,8 +34,6 @@ require_once(LIB_PATH.DS."instructorclasses.php");
 require_once(LIB_PATH.DS."studSubjects.php");
 require_once(LIB_PATH.DS."grades.php");
 require_once(LIB_PATH.DS."room.php");
-
-
 //Load Core objects
 require_once(LIB_PATH.DS."database.php");
 

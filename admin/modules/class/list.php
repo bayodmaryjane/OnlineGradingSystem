@@ -1,19 +1,19 @@
 
 <div class="container">
-<h3 align="left">List of Class</h3>
+<h3 align="left" style="margin-top:5px; font-family:Poppins; font-weight:900; ">List of Class</h3>
     <form action="#.php" Method="POST"> 
 
 		<table id="example" class="display" cellspacing="0" width="100%">
 	
 	  <thead>
 	 	<tr>
-	 		 <th>No.</th>
-	  		<th> Class Code</th>
-	  		<th>Instructor</th> 
-	  		<th>Days And Time</th> 
-	  		<th>Room</th> 
-	  		<th>Section</th> 
-	  		<th>Students</th>
+	 		 <th style="font-size:16px; font-family:Poppins; font-weight:900;">No.</th>
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;"> Class Code</th>
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;">Instructor</th> 
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;">Days And Time</th> 
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;">Room</th> 
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;">Section</th> 
+	  		<th style="font-size:16px; font-family:Poppins; font-weight:900;">Students</th>
 	 	</tr>	
 	  </thead>
 	  <tbody>
@@ -34,13 +34,13 @@
 				foreach ($cur as $result) {
 			  		echo '<tr>';
 			  		echo '<td width="5%" align="center"></td>';
-			  		echo '<td> ' . $result->CLASS_CODE.' </td>';
-			  		echo '<td>'. $result->INST_FULLNAME.'</td>';
-			  		echo '<td>'. $result->DAY.' /'. $result->C_TIME.'</a></td>'; 
-			  		echo '<td>'.$result->ROOM.'</a></td>'; 
-			  		echo '<td>'.$result->SECTION.'</a></td>'; 
-			  		echo '<td><a href="index.php?view=class&classId='.$result->CLASS_ID.'">View List</a>';
-                    echo '<a href="index.php?view=time&classId='.$result->CLASS_ID.'">Edit</a></td>'; 
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;"> ' . $result->CLASS_CODE.' </td>';
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;">'. $result->INST_FULLNAME.'</td>';
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;">'. $result->DAY.' /'. $result->C_TIME.'</a></td>'; 
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;">'.$result->ROOM.'</a></td>'; 
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;">'.$result->SECTION.'</a></td>'; 
+			  		echo '<td style="font-size:15px; font-family:Poppins; font-weight:500;"><a href="index.php?view=class&classId='.$result->CLASS_ID.'" style="color:#780000; margin-right:5px;">View List</a>';
+                    echo '<a href="index.php?view=time&classId='.$result->CLASS_ID.'" style="color:#780000;">Edit</a></td>'; 
 			  	 	echo '</tr>';
 		  		}
 		  	} 

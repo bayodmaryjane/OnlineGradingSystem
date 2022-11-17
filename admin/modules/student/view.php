@@ -1,3 +1,12 @@
+<style type="text/css">
+
+    .wells{
+        font-size: 20px;
+    }
+
+</style>
+
+
 <div class="container">
 <div class="well">
 

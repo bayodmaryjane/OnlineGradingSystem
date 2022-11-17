@@ -17,15 +17,11 @@
 			<div class="well">
 				<fieldset>
 					<legend><h4 class="text-center">VISION</h4></legend>
-						<p>The Kabankalan Catholic College is an educative and evangelizing community, 
-						fostering the values of love, life, justice, and care for creation, 
-						an agent of societal transformation and builder of God’s kingdom.</p>
+						<p>T</p>
 				</fieldset>	
 				<fieldset>
 					<legend><h4 class="text-center">MISSION</h4></legend>
-						<p>The KCC exists to provide quality education and holistic formation to the youth of the Diocese,
-						 having a preferential option for the poor, in a Christ-centered environment that cultivates academic
-						  excellence and continuous learning.</p>
+						<p></p>
 				</fieldset>	
 
 				

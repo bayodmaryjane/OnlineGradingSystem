@@ -1,5 +1,5 @@
-<div class="container" style="margin-top: 90px"> 
-<div class="container">
+<div class="container" style="margin-top: 110px"> 
+<div class="container" style="margin-top: 90px; border: 2px solid black; border-radius: 10px; background-color:white;">
 	<?php
 		check_message();
 			
@@ -12,26 +12,27 @@
 			?>
 			  				
 				 <fieldset>
-						<legend>Student Information</legend>
+						<legend  style="margin-top:10px; color:#780000; font-size:35px;  font-family:Poppins; font-weight:1000px;">Student Information</legend>
 					<table class="table table-bordered" cellspacing="0">
-						<tr><td>ID Number :</td><td width="80%"><?php echo $cur->IDNO; ?></td></tr>	
-							<td>Fullname :</td><td><?php echo $cur->LNAME .', '. $cur->FNAME.', '. $cur->MNAME; ?></td>	</tr></tr>
-							<td>Gender :</td><td><?php 
+						<tr>
+                            <td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">ID Number :</td><td width="80%"><?php echo $cur->IDNO; ?></td></tr>	
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Fullname :</td><td><?php echo $cur->LNAME .', '. $cur->FNAME.', '. $cur->MNAME; ?></td>	</tr></tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Gender :</td><td><?php 
 								if($cur->SEX== 'F'){
 									echo "Female";
 								}else{
 									echo "Male";
 								}	
 								 ?></td>	</tr>
-							<td>Age :</td><td><?php echo $cur->AGE; ?></td>	</tr>
-							<td>Birth Date :</td><td><?php echo $cur->BDAY; ?></td>	</tr>
-							<td>Place of Birth :</td><td><?php echo $cur->BPLACE; ?></td>	</tr>
-							<td>Civil Status :</td><td><?php echo $cur->STATUS; ?></td>	</tr>
-							<td>Nationality :</td><td><?php echo $cur->NATIONALITY; ?></td>	</tr>
-							<td>Religion :</td><td><?php echo $cur->RELIGION; ?></td>	</tr>
-							<td>Contact No. :</td><td><?php echo $cur->CONTACT_NO; ?></td>	</tr>
-							<td>Email Address :</td><td><?php echo $cur->EMAIL; ?></td>	</tr>
-							<td>Home Address :</td><td><?php echo $cur->HOME_ADD; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Age :</td><td><?php echo $cur->AGE; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Birth Date :</td><td><?php echo $cur->BDAY; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Place of Birth :</td><td><?php echo $cur->BPLACE; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Civil Status :</td><td><?php echo $cur->STATUS; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Nationality :</td><td><?php echo $cur->NATIONALITY; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Religion :</td><td><?php echo $cur->RELIGION; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Contact No. :</td><td><?php echo $cur->CONTACT_NO; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Email Address :</td><td><?php echo $cur->EMAIL; ?></td>	</tr>
+							<td style="font-family:Poppins; font-weight:800; letter-spacing:1px;">Home Address :</td><td><?php echo $cur->HOME_ADD; ?></td>	</tr>
 						
 						</tr>
 					</table>	
@@ -46,12 +47,12 @@
 						<legend>Secondary details</legend>
 						<table class="table table-bordered" cellspacing="0" width="100%">
 						<tbody>	
-							<tr><td>Father :</td><td width="80%"><?php echo $det->FATHER; ?></td></tr>
+							<!--<tr><td>Father :</td><td width="80%"><?php echo $det->FATHER; ?></td></tr>
 							<tr><td>Occupation :</td><td><?php echo $det->FATHER_OCCU; ?></td></tr>
 							<tr><td>Mother :</td><td><?php echo $det->MOTHER; ?></td></tr>
 							<tr><td>Occupation :</td><td><?php echo $det->MOTHER_OCCU; ?></td></tr>
 							<tr><td>Boarding :</td><td><?php echo $det->BOARDING; ?></td></tr>	
-							<tr><td>With family :</td><td><?php echo $det->WITH_FAMILY; ?></td></tr>
+							<tr><td>With family :</td><td><?php echo $det->WITH_FAMILY; ?></td></tr>-->
 							<tr><td>Guardian :</td><td><?php echo $det->GUARDIAN; ?></td></tr>
 							<tr><td>Address :</td><td><?php echo $det->GUARDIAN_ADDRESS; ?></td></tr>
 							<tr><td>Other Person Supporting :</td><td><?php echo $det->OTHER_PERSON_SUPPORT; ?></td></tr>
@@ -62,6 +63,7 @@
 
 
 				</fieldset>	
+<!--
 				<?php
 				$req = new Requirements();
 				$res = $req->single_result($_SESSION['IDNO']);
@@ -77,7 +79,7 @@
 						
 						</table>
 						
-				</fieldset>					
+				</fieldset>		-->			
 			
 	  	</div><!--End of well-->
 

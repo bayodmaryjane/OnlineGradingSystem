@@ -59,7 +59,7 @@ if (isset($_POST['btnlogin'])) {
 <html lang="en">
 
   <head>
-    <title>Online Grading System</title>
+    <title>TCUSIS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -74,11 +74,31 @@ if (isset($_POST['btnlogin'])) {
     <link rel="stylesheet" href="<?php echo WEB_ROOT; ?>plugins/homepage/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="<?php echo WEB_ROOT; ?>plugins/homepage/fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="<?php echo WEB_ROOT; ?>plugins/homepage/css/aos.css">
+    <link rel="icon" href="images/tculogo.png" type="image/x-icon">
+
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="<?php echo WEB_ROOT; ?>plugins/homepage/css/style.css">
 
   </head>
+    
+      <style type="text/css">
+	  .ftco-cover-1.overlay h1.line-bottom:after {
+		background: #780000;
+		width: 50px;
+	  }
+	  
+	    .quick-contact-form h2{
+		font-size: 18px;
+		color: #780000;
+		}
+		
+		form{
+			
+			
+		}
+		
+  </style>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
@@ -103,7 +123,7 @@ if (isset($_POST['btnlogin'])) {
 
             <div class="col-3 ">
               <div class="site-logo">
-                <a href="<?php echo WEB_ROOT; ?>">Grading System</a>
+                <a href="<?php echo WEB_ROOT; ?>" src="images/tculogo.png">TCUSIS</a>
               </div>
             </div>
 
@@ -123,7 +143,7 @@ if (isset($_POST['btnlogin'])) {
 
       </header> 
 <div class="ftco-blocks-cover-1">
-      <div class="ftco-cover-1 overlay" style="background-image: url('images/school.jpg')">
+       <div class="ftco-cover-1 overlay" style="background-image: url('images/tcu.png'); ">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-5">
@@ -142,21 +162,20 @@ if (isset($_POST['btnlogin'])) {
       <div class="container">
         <div class="row">
           <div class="col-md-5 pr-md-5 mr-auto">
-            <h2 class="line-bottom">Sign In</h2>
-            <p>This area, you have to login using your id number in school in order access your account ang view your profile and subject with grades</p>
+          
           </div>
           <div class="col-md-6">
-            <div class="quick-contact-form bg-white">
-                <h2>Sign In</h2>
-                <form action="login.php" method="POST">
+            <div class="quick-contact-form bg-white" style="margin-top:-800px; width: 600px ; height: 690px; margin-left: 120px; ">
+                <h2 style="text-transform:none; margin-top: 150px;">Sign In</h2>
+                <form action="login.php" method="POST" style="position:relative; top:-5px;">
                   <div class="form-group">
-                    <input type="number" class="form-control" name="uname" placeholder="Student Id Number">
+                    <input type="number" class="form-control" name="uname" placeholder="Student Id Number" style="width:400px; margin-left: 25px;">
                   </div>
-                  <div class="form-group">
-                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                  <div class="form-group" style="margin-left: 25px;">
+                    <input type="password" class="form-control" name="pass" placeholder="Password" style="width:400px; display:center; ">
                   </div> 
                   <div class="form-group">
-                    <input type="submit" value="Login" name="btnlogin" class="btn btn-primary px-5">
+                    <input type="submit" value="Login" name="btnlogin" class="btn btn-primary px-5" style="margin-left:150px; background-color:#780000;">
                   </div>
                 </form>
               </div>
@@ -164,23 +183,7 @@ if (isset($_POST['btnlogin'])) {
         </div>
       </div>
     </div>
-    <footer >
-      <div class="container">
-         
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </footer>
+  
 
     </div>
 

@@ -1,6 +1,9 @@
 <?php 
 require_once ("../../../includes/initialize.php");
+require_once ("../../../encryption.php");
+
 $action = (isset($_GET['action']) && $_GET['action'] != '') ? $_GET['action'] : '';
+$studentAES = new StudentEncryption();
 
 switch ($action) {
 	case 'add' :
@@ -104,24 +107,31 @@ $CONTACT_NO = $_POST['contact'];
 $HOME_ADD = $_POST['home'];
 $EMAIL   = $_POST['email'];
 
-
+$studentAES = new StudentEncryption();
 $student = new Student();
 //$student->S_ID				= "null";
-$student->IDNO 				=	$IDNO;
-$student->LNAME				=	$LNAME;
-$student->FNAME				=	$FNAME;
-$student->MNAME				=	$MNAME;
-$student->SEX				=	$SEX;
-$student->BDAY				=	$BDAY;
-$student->BPLACE			=	$BPLACE;
-$student->STATUS			=	$STATUS;
-$student->AGE				=	$AGE;
-$student->NATIONALITY		=	$NATIONALITY;
-$student->RELIGION			=	$RELIGION;
-$student->CONTACT_NO		=	$CONTACT_NO;
-$student->HOME_ADD			=	$HOME_ADD;
-$student->EMAIL 			=	$EMAIL;
+$student->IDNO 				=	$studentAES->encryptData($IDNO);
+$student->LNAME				=	$studentAES->encryptData($LNAME);
+$student->FNAME				=	$studentAES->encryptData($FNAME);
+$student->MNAME				=	$studentAES->encryptData($MNAME);
+$student->SEX				=	$studentAES->encryptData($SEX);
+$student->BDAY				=	$studentAES->encryptData($BDAY);
+$student->BPLACE			=	$studentAES->encryptData($BPLACE);
+$student->STATUS			=	$studentAES->encryptData($STATUS);
+$student->AGE				=	$studentAES->encryptData($AGE);
+$student->NATIONALITY		=	$studentAES->encryptData($NATIONALITY);
+$student->RELIGION			=	$studentAES->encryptData($RELIGION);
+$student->CONTACT_NO		=	$studentAES->encryptData($CONTACT_NO);
+$student->HOME_ADD			=	$studentAES->encryptData($HOME_ADD);
+$student->EMAIL 			=	$studentAES->encryptData($EMAIL);
 
+
+$decrypted_IDNO = $studentAES->decryptData($student->IDNO);
+  //                          $decrypted_Name = $studentAES->decryptData($student->Name);
+    
+    
+$decrypted_SEX = $studentAES->decryptData($student->SEX);
+    
 //course infor
 /*$course	= $_POST['course'];
 $semester = $_POST['semester'];
@@ -138,24 +148,24 @@ $sy->IDNO 		= $IDNO;*/
 
 */  
 //secondary Details
-$FATHER 			= $_POST['father'];
-$FATHER_OCCU 		= $_POST['fOccu'];
-$MOTHER 			= $_POST['mother'];
-$MOTHER_OCCU 		= $_POST['mOccu'];
-$BOARDING 			= $_POST['boarding'];
-$WITH_FAMILY 		= $_POST['withfamily'];
+//$FATHER 			= $_POST['father'];
+//$FATHER_OCCU 		= $_POST['fOccu'];
+//$MOTHER 			= $_POST['mother'];
+//$MOTHER_OCCU 		= $_POST['mOccu'];
+//$BOARDING 			= $_POST['boarding'];
+//$WITH_FAMILY 		= $_POST['withfamily'];
 $GUARDIAN 			=  $_POST['guardian'];
 $GUARDIAN_ADDRESS 	=  $_POST['guardianAdd'];
 $OTHER_PERSON_SUPPORT = $_POST['otherperson'];
 $ADDRESS 			=  $_POST['otherAddress'];
 
 $studdetails = new Student_details();
-$studdetails->FATHER				=	$FATHER;
-$studdetails->FATHER_OCCU			=	$FATHER_OCCU;
-$studdetails->MOTHER				=	$MOTHER;
-$studdetails->MOTHER_OCCU			=	$MOTHER_OCCU;
-$studdetails->BOARDING			    =	$BOARDING;
-$studdetails->WITH_FAMILY			=	$WITH_FAMILY;
+//$studdetails->FATHER				=	$FATHER;
+//$studdetails->FATHER_OCCU			=	$FATHER_OCCU;
+//$studdetails->MOTHER				=	$MOTHER;
+//$studdetails->MOTHER_OCCU			=	$MOTHER_OCCU;
+//$studdetails->BOARDING			    =	$BOARDING;
+//$studdetails->WITH_FAMILY			=	$WITH_FAMILY;
 $studdetails->GUARDIAN			    =	$GUARDIAN;
 $studdetails->GUARDIAN_ADDRESS		=	$GUARDIAN_ADDRESS;
 $studdetails->OTHER_PERSON_SUPPORT	=	$OTHER_PERSON_SUPPORT;
@@ -170,20 +180,20 @@ $studdetails->IDNO 				    =	$IDNO;
 */
 
 //requirements
-$nso  				  = isset($_POST['nso']) ? "Yes" : "No";
-$bapt 				  = isset($_POST['baptismal']) ? "Yes" : "No";
-$entrance 			  = isset($_POST['entrance']) ? "Yes" : "No";
-$mir_contract  		  = isset($_POST['mir_contract']) ? "Yes" : "No";
-$certifcateOfTransfer = isset($_POST['certifcateOfTransfer']) ? "Yes" : "No";
+//$nso  				  = isset($_POST['nso']) ? "Yes" : "No";
+//$bapt 				  = isset($_POST['baptismal']) ? "Yes" : "No";
+//$entrance 			  = isset($_POST['entrance']) ? "Yes" : "No";
+//$mir_contract  		  = isset($_POST['mir_contract']) ? "Yes" : "No";
+//$certifcateOfTransfer = isset($_POST['certifcateOfTransfer']) ? "Yes" : "No";
 
-$requirements = new Requirements();
+//$requirements = new Requirements();
 
-$requirements->NSO				 		= $nso;
-$requirements->BAPTISMAL		   		= $bapt;
-$requirements->ENTRANCE_TEST_RESULT		= $entrance;
-$requirements->MARRIAGE_CONTRACT        = $mir_contract;
-$requirements->CERTIFICATE_OF_TRANSFER	= $certifcateOfTransfer;
-$requirements->IDNO 			   		= $IDNO;
+//$requirements->NSO				 		= $nso;
+//$requirements->BAPTISMAL		   		= $bapt;
+//$requirements->ENTRANCE_TEST_RESULT		= $entrance;
+//$requirements->MARRIAGE_CONTRACT        = $mir_contract;
+//$requirements->CERTIFICATE_OF_TRANSFER	= $certifcateOfTransfer;
+//$requirements->IDNO 			   		= $IDNO;
 //$istrue = $requirements->create(); 
 /*if ($istrue) {
 	output_message('Student requirements successfully added!');
@@ -227,7 +237,7 @@ if ($IDNO == "") {
 }elseif ($CONTACT_NO == "") {
 	message('Contact No. is required!', "error");
 	redirect ('index.php?view=add');
-}elseif ($HOME_AD == "") {
+}elseif ($HOME_ADD == "") {
 	message('Home Address is required!', "error");
 	redirect ('index.php?view=add');
 }elseif ($EMAIL == "") {
@@ -252,7 +262,7 @@ if ($IDNO == "") {
 	$student->create(); 
 	#$sy->create();  
 	$studdetails->create();
-	$requirements->create(); 
+	//$requirements->create(); 
 	message('New student addedd successfully!', "success");
 	redirect('index.php?view=list');	
 
@@ -334,6 +344,7 @@ $studdetails->IDNO 				    =	$IDNO;
 */
 
 //requirements
+    /*
 $nso  				  = isset($_POST['nso']) ? "Yes" : "No";
 $bapt 				  = isset($_POST['baptismal']) ? "Yes" : "No";
 $entrance 			  = isset($_POST['entrance']) ? "Yes" : "No";
@@ -347,7 +358,7 @@ $requirements->BAPTISMAL		   		= $bapt;
 $requirements->ENTRANCE_TEST_RESULT		= $entrance;
 $requirements->MARRIAGE_CONTRACT        = $mir_contract;
 $requirements->CERTIFICATE_OF_TRANSFER	= $certifcateOfTransfer;
-$requirements->IDNO 			   		= $IDNO;
+$requirements->IDNO 			   		= $IDNO;*/
 //$istrue = $requirements->create(); 
 /*if ($istrue) {
 	output_message('Student requirements successfully added!');
@@ -367,7 +378,7 @@ if ($IDNO == "") {
 }elseif ($MNAME == "") {
 	message('Middle Name is required!', "error");
 	redirect ('index.php?view=edit&id='.$IDNO);
-}elseif ($Bddd == "") {
+}elseif ($BPLACE == "") {
 	message('Birth Place is required!', "error");
 	redirect ('index.php?view=add');
 }elseif ($EMAIL == "") {
@@ -380,7 +391,7 @@ if ($IDNO == "") {
 	$student->update($_GET['id']); 
 	//$sy->update($_GET['id']);  
 	$studdetails->update($_GET['id']);
-	$requirements->update($_GET['id']); 
+	//$requirements->update($_GET['id']); 
 	message('Student infomation updated successfully!', "info");
 	redirect('index.php');	
 

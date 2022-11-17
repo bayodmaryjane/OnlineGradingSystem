@@ -66,7 +66,7 @@
                       "idno"></label>
 
                       <div class="col-md-8">
-                        <button class="btn btn-primary" name="save" type="submit" >Save</button>
+                        <button class="btn btn-primary" name="save" type="submit" style="background-color:#780000;">Save</button>
                       </div>
                     </div>
                   </div>

@@ -2,11 +2,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V16</title>
+	<title>TCUSIS-Admin Site</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="../plugins/login/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="../plugins/login/images/tculogo.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../plugins/login/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -84,7 +84,7 @@ if (isset($_POST['btnlogin'])) {
 
 ?>
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('../plugins/login/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('../plugins/login/images/tcu.png');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">
 					Admin Account Login
@@ -102,7 +102,7 @@ if (isset($_POST['btnlogin'])) {
 					</div>
 
 					<div class="container-login100-form-btn m-t-32">
-						<button class="login100-form-btn" name="btnlogin">
+						<button class="login100-form-btn" name="btnlogin" style="background: #780000;">
 							Login
 						</button>
 					</div>

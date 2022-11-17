@@ -21,6 +21,7 @@
   <link href="<?php echo WEB_ROOT; ?>css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <link href="<?php echo WEB_ROOT; ?>css/dataTables.bootstrap.css" rel="stylesheet" media="screen">
   <link rel="stylesheet" type="text/css" href="<?php echo WEB_ROOT; ?>css/jquery.dataTables.css">
+  <link rel="icon" href="/tculogo.png" type="image/x-icon">
 </head>
 <style type="text/css">
 table {
@@ -107,7 +108,7 @@ table {
                 ?> 
                    <li class="<?php echo (currentpage_admin() == 'inst_front') ? "active" : false;?>">
                     <a href="<?php echo WEB_ROOT; ?>admin/modules/inst_front/index.php?view=record">
-                      <i class="now-ui-icons users_single-02"></i>
+                      <i class='bx bxs-user'></i>
                       <p style="font-style:poppins; font-size:12px;">Record</p>    
                     </a>
                    </li>  
@@ -118,7 +119,7 @@ table {
                 ?>
             <li  class="<?php echo (currentpage_admin() == 'logout') ? "active" : false;?>">
                     <a href="<?php echo WEB_ROOT; ?>admin/logout.php">
-                      <i class=""></i>
+                      <i class='bx bx-log-out-circle'></i>
                       <p style="font-style:poppins; font-size:12px;">Logout</p>   
                    </a>
                  </li>

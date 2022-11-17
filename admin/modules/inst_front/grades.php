@@ -84,7 +84,7 @@ $cur = $grade->single_grades($gradeId);
               <label class="col-md-4 control-label" for=
               "finalave">Average</label>
               <div class="col-md-8">
-                 <input class="form-control input-sm" id="finalave" name="finalave" readonly    type="text" value="<?php echo (isset($cur)) ? $cur->AVE  : 'AVE' ;?>">
+                 <input class="form-control input-sm" id="finalave" name="finalave"   type="text" value="<?php echo (isset($cur)) ? $cur->AVE  : 'AVE' ;?>">
               </div>
             </div>
           </div>
