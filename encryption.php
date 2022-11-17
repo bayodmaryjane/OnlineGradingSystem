@@ -4,9 +4,9 @@ class StudentEncryption {
  
 
     public function __construct() {
-        $this->cipher = "aes-256-cbc"; 
+        $this->cipher = "aes-128-cbc"; 
 
-        $this->encryption_key = openssl_random_pseudo_bytes(32); 
+        $this->encryption_key = openssl_random_pseudo_bytes(16); 
     
         $this->iv_size = openssl_cipher_iv_length($this->cipher); 
         $this->iv = openssl_random_pseudo_bytes($this->iv_size); 
