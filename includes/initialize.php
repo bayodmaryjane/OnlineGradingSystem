@@ -1,10 +1,4 @@
 <?php
-/**
-* Description:	This includes for basic and core configurations.
-* Author:		Joken Villanueva
-* Date Created:	october 27, 2013
-* Revised By:		
-*/
 
 //define the core paths
 //Define them as absolute peths to make sure that require_once works as expected
@@ -13,7 +7,7 @@
 //(\ for windows, / for Unix)
 defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
 
-defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'OnlineGradingSystem');
+defined('SITE_ROOT') ? null : define ('SITE_ROOT', $_SERVER['DOCUMENT_ROOT'].DS.'tcusis');
 
 defined('LIB_PATH') ? null : define ('LIB_PATH',SITE_ROOT.DS.'includes');
 

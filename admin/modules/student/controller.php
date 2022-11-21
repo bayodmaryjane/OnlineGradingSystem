@@ -109,7 +109,7 @@ $EMAIL   = $_POST['email'];
 
 $studentAES = new StudentEncryption();
 $student = new Student();
-//$student->S_ID				= "null";
+$student->S_ID				= "null";
 $student->IDNO 				=	$studentAES->encryptData($IDNO);
 $student->LNAME				=	$studentAES->encryptData($LNAME);
 $student->FNAME				=	$studentAES->encryptData($FNAME);
@@ -125,12 +125,26 @@ $student->CONTACT_NO		=	$studentAES->encryptData($CONTACT_NO);
 $student->HOME_ADD			=	$studentAES->encryptData($HOME_ADD);
 $student->EMAIL 			=	$studentAES->encryptData($EMAIL);
 
+//$student->IDNO 				=	$IDNO;
+//$student->LNAME				=	$LNAME;
+//$student->FNAME				=	$FNAME;
+//$student->MNAME				=	$MNAME;
+//$student->SEX				=	$SEX;
+//$student->BDAY				=	$BDAY;
+//$student->BPLACE			=	$BPLACE;
+//$student->STATUS			=	$STATUS;
+//$student->AGE				=	$AGE;
+//$student->NATIONALITY		=	$NATIONALITY;
+//$student->RELIGION			=	$RELIGION;
+//$student->CONTACT_NO		=	$CONTACT_NO;
+//$student->HOME_ADD			=	$HOME_ADD;
+//$student->EMAIL 			=	$EMAIL;
 
-$decrypted_IDNO = $studentAES->decryptData($student->IDNO);
+//$decrypted_IDNO = $studentAES->decryptData($student->IDNO);
   //                          $decrypted_Name = $studentAES->decryptData($student->Name);
     
     
-$decrypted_SEX = $studentAES->decryptData($student->SEX);
+//$decrypted_SEX = $studentAES->decryptData($student->SEX);
     
 //course infor
 /*$course	= $_POST['course'];

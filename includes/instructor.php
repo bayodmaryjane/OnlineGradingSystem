@@ -1,10 +1,4 @@
 <?php
-/**
-* Description:	This is a class for student.
-* Author:		Joken Villanueva
-* Date Created:	June 8, 2013
-* Revised By:		
-*/
 require_once(LIB_PATH.DS.'database.php');
 class Instructor {
 	

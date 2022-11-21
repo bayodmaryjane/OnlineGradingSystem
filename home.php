@@ -3,7 +3,7 @@
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-5">
-              <h1 class="line-bottom">Online Grading System</h1>
+              <h1 class="line-bottom">TCUSIS</h1>
             </div>
             <div class="col-lg-5 ml-auto"> 
             </div>

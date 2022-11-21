@@ -19,7 +19,7 @@
 				  <tbody>
 				  	<?php
                       
-				  	$studentAES = new StudentEncryption();
+				  	//$studentAES = new StudentEncryption();
 				  	  	$mydb->setQuery("SELECT  `IDNO` ,UPPER(CONCAT(  `LNAME` ,  ', ',  `FNAME` ,  ' ',  `MNAME` )) AS  'Name',
 				  						  `SEX` ,`AGE`, `BDAY` ,  `STATUS` ,  `EMAIL`
 				  						  FROM  `tblstudent`");
@@ -30,23 +30,23 @@
 
 				  	
 				  		function loadresult(){
-                            require_once ("../../../encryption.php");
+                            //require_once ("../../../encryption.php");
                             
 				  			global $mydb;
 					  		$cur = $mydb->loadResultList();
 							foreach ($cur as $student) {
                              
                                 
-                            $studentAES = new StudentEncryption();
-                            $decrypted_IDNO = $studentAES->decryptData($student->IDNO);
-                            $decrypted_Name = $studentAES->decryptData($student->Name);
-                            $decrypted_SEX = $studentAES->decryptData($student->SEX);
+                            //$studentAES = new StudentEncryption();
+                            //$decrypted_IDNO = $studentAES->decryptData($student->IDNO);
+                            //$decrypted_Name = $studentAES->decryptData($student->Name);
+                            //$decrypted_SEX = $studentAES->decryptData($student->SEX);
                                 
 					  		echo '<tr>';
 					  		echo '<td width="5%" align="center"></td>';
-					  		echo '<td width="10%"><input type="checkbox" name="selector[]" id="selector[]" value="'.$decrypted_IDNO. '"/>' . $decrypted_IDNO.'</td>';
-					  		echo '<td  >'. $decrypted_Name.'</td>';
-					  		echo '<td align="center">'. $decrypted_SEX.'</td>';
+					  		echo '<td width="10%"><input type="checkbox" name="selector[]" id="selector[]" value="'.$student->IDNO. '"/>' .$student->IDNO.'</td>';
+					  		echo '<td  >'.$student->Name.'</td>';
+					  		echo '<td align="center">'. $student->SEX.'</td>';
 					  		echo '<td  align="center">'. $student->AGE.'</td>';
 					  		echo '<td  align="center">'. $student->BDAY.'</td>';
 					  		echo '<td>'. $student->EMAIL.'</td>';

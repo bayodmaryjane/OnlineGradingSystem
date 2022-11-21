@@ -4,7 +4,7 @@
 			<div class="well">
 				<div class="media">
 			  <a class="pull-left" href="#">
-			    <img class="media-object" src="<?php echo WEB_ROOT; ?>/img/CSA bannerjpg.png" width="800px">
+			    <img class="media-object" src="" width="800px">
 			  </a>
 			</div>
 			</div>
@@ -12,6 +12,7 @@
 </div>
 <div class="container">
 
+    <!--
 	<div class="col-xs-12 col-sm-9">
 		<div class="rows">
 			<div class="well">
@@ -28,6 +29,7 @@
 			</div>
 		</div>
 	</div>
+-->
 	<!--/span--> 
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">

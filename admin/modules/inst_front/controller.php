@@ -29,8 +29,14 @@ switch ($action) {
 function savegrade(){
 	if (isset($_POST['savegrades'])){
 
-	if ($_POST['finalave']>=75 AND $_POST['finalave']<=100){
+	if ($_POST['finalave']>=1 AND $_POST['finalave']<=3){
 		$remarks = "Passed";
+    }elseif ($_POST['finalave']=='INC') {
+        $remarks= "INC";
+    }elseif ($_POST['finalave']=='UD') {
+        $remarks= "UD";
+    }elseif ($_POST['finalave']=='D') {
+        $remarks= "D";
 	}else{
 		$remarks= "Failed";
 	}

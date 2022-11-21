@@ -4,7 +4,7 @@
 			<div class="well">
 				<div class="media">
 			  <a class="pull-left" href="#">
-			    <img class="media-object" src="<?php echo WEB_ROOT; ?>/img/CSA bannerjpg.png" width="800px">
+			    <img class="media-object" src="">
 			  </a>
 			</div>
 			</div>
@@ -12,26 +12,7 @@
 </div>
 <div class="container">
 
-	<div class="col-xs-12 col-sm-9">
-		<div class="rows">
-			<div class="well">
-				<fieldset>
-					<legend><h4 class="text-center">VISION</h4></legend>
-						<p>The Kabankalan Catholic College is an educative and evangelizing community, 
-						fostering the values of love, life, justice, and care for creation, 
-						an agent of societal transformation and builder of God’s kingdom.</p>
-				</fieldset>	
-				<fieldset>
-					<legend><h4 class="text-center">MISSION</h4></legend>
-						<p>The KCC exists to provide quality education and holistic formation to the youth of the Diocese,
-						 having a preferential option for the poor, in a Christ-centered environment that cultivates academic
-						  excellence and continuous learning.</p>
-				</fieldset>	
 
-				
-			</div>
-		</div>
-	</div>
 	<!--/span--> 
 	<div class="row row-offcanvas row-offcanvas-right">
 		<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">

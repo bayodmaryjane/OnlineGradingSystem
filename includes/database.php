@@ -1,10 +1,4 @@
 <?php
-/**
-* Description:	The main class for Database.
-* Author:		Joken Villanueva
-* Date Created:	october27, 2013
-* Revised By:		
-*/
 
 require_once(LIB_PATH.DS."config.php");
 class Database {
